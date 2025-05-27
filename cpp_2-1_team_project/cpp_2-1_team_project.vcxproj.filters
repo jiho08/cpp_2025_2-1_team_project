@@ -1,33 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="리소스 파일">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="01.Core">
+    <Filter Include="Engine">
+      <UniqueIdentifier>{5289e261-fa82-49ed-9abe-0a7119c57acc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\01. Core">
       <UniqueIdentifier>{67c02bd0-09b1-434d-b79d-666180fbf703}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\00. Headers">
+      <UniqueIdentifier>{6bf517a2-c1b7-4c84-9662-287494f8037b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\02. Object">
+      <UniqueIdentifier>{96fa6c6a-5a00-49da-a6ec-f19cecb26f60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Scene">
+      <UniqueIdentifier>{973278ad-656b-472f-b0cf-22e33813ef29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Component">
+      <UniqueIdentifier>{e7628910-4645-4580-aa0a-5f431b31d58a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\05. Module">
+      <UniqueIdentifier>{08b95297-5da7-41d1-942d-3825a4cf98c8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Core.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
+    <ClCompile Include="main.cpp">
+      <Filter>Engine\01. Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core.cpp">
+      <Filter>Engine\01. Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Core.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>01.Core</Filter>
-    </ClCompile>
+    <ClInclude Include="Core.h">
+      <Filter>Engine\01. Core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
