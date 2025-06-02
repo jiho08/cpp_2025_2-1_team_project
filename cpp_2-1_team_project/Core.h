@@ -1,4 +1,6 @@
 #pragma once
+#include "Enums.h"
+
 class Core
 {
 public:
@@ -8,4 +10,7 @@ private:
 	void Update();
 
 	void Render();
+
+public:
+	Scene currentScene = Scene::Title;
 };
