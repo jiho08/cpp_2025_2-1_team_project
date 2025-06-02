@@ -35,6 +35,9 @@
       <Filter>Engine\01. Core</Filter>
     </ClCompile>
     <ClCompile Include="Singleton.cpp" />
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Engine\03. Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -44,5 +47,9 @@
       <Filter>Engine\00. Headers</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="Enums.h" />
+    <ClInclude Include="TitleScene.h">
+      <Filter>Engine\03. Scene</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
