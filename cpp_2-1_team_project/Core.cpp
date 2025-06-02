@@ -1,5 +1,6 @@
 #include "Core.h"
 #include "Enums.h"
+
 void Core::Run()
 {
 	while (true)
