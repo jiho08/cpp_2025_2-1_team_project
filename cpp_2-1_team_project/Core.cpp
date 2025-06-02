@@ -15,16 +15,13 @@ void Core::Update()
 	switch (currentScene)
 	{
 	case Title:
+
 		break;
 	case Game:
 		break;
 	case Setting:
 		break;
 	case Exit:
-		break;
-	case End:
-		break;
-	default:
 		break;
 	}
 }
@@ -33,3 +30,4 @@ void Core::Render()
 {
 
 }
+
