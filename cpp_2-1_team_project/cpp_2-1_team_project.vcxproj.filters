@@ -34,12 +34,14 @@
     <ClCompile Include="Core.cpp">
       <Filter>Engine\01. Core</Filter>
     </ClCompile>
+    <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="TitleScene.cpp">
       <Filter>Engine\03. Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Singleton.cpp">
+    <ClCompile Include="Console.cpp">
       <Filter>Engine\01. Core</Filter>
     </ClCompile>
+    <ClCompile Include="GameScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -48,17 +50,14 @@
     <ClInclude Include="defines.h">
       <Filter>Engine\00. Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="Enums.h" />
     <ClInclude Include="TitleScene.h">
       <Filter>Engine\03. Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Enums.h">
-      <Filter>Engine\00. Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Singleton.h">
+    <ClInclude Include="Console.h">
       <Filter>Engine\01. Core</Filter>
     </ClInclude>
-    <ClInclude Include="IScene.h">
-      <Filter>Engine\03. Scene</Filter>
-    </ClInclude>
+    <ClInclude Include="GameScene.h" />
   </ItemGroup>
 </Project>
