@@ -132,6 +132,7 @@
     <ClInclude Include="defines.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
@@ -140,6 +141,7 @@
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
