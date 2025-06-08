@@ -131,12 +131,14 @@
     <ClInclude Include="Core.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="Enums.h" />
+    <ClInclude Include="GameScene.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="TitleScene.cpp" />
