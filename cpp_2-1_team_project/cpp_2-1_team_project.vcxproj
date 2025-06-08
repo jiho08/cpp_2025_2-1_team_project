@@ -130,6 +130,7 @@
     <ClInclude Include="Core.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="Enums.h" />
+    <ClInclude Include="IScene.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>

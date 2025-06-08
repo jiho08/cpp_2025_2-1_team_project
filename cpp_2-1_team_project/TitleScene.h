@@ -1,5 +1,8 @@
 #pragma once
-class TitleScene
-{
-};
+#include "IScene.h"
 
+class TitleScene : public IScene
+{
+public:
+	void Update(SceneManager& sceneManager) override;
+};
