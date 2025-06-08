@@ -38,6 +38,9 @@
     <ClCompile Include="TitleScene.cpp">
       <Filter>Engine\03. Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Console.cpp">
+      <Filter>Engine\01. Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -50,6 +53,9 @@
     <ClInclude Include="Enums.h" />
     <ClInclude Include="TitleScene.h">
       <Filter>Engine\03. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>Engine\01. Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
