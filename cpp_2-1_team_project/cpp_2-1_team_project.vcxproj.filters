@@ -42,6 +42,7 @@
       <Filter>Engine\01. Core</Filter>
     </ClCompile>
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -59,5 +60,9 @@
       <Filter>Engine\01. Core</Filter>
     </ClInclude>
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="IScene.h">
+      <Filter>Engine\03. Scene</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
