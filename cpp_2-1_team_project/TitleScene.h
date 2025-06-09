@@ -4,5 +4,7 @@
 class TitleScene : public IScene
 {
 public:
-	void Update(SceneManager& sceneManager) override;
+	void Init() override;
+	void Update() override;
+	void Render() override;
 };

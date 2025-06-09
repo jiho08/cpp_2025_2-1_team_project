@@ -4,9 +4,17 @@
 
 using std::cout;
 
+void TitleScene::Init()
+{
+}
+
 void TitleScene::Update(SceneManager& sceneManager)
 {
 	char input;
 
 	cout << "title";
+}
+
+void TitleScene::Render()
+{
 }
