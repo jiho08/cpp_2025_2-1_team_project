@@ -12,9 +12,10 @@ using std::vector;
 #include"Enums.h"
 
 
-
+ 
 class Console
 {
+public:
     void SetConsoleSettings(int _width, int _height, bool _isFullScreen, const std::wstring& _title);
 
     void SetLockResize();
