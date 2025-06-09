@@ -41,8 +41,10 @@
     <ClCompile Include="Console.cpp">
       <Filter>Engine\01. Core</Filter>
     </ClCompile>
-    <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="GameScene.cpp">
+      <Filter>Engine\03. Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -59,9 +61,8 @@
     <ClInclude Include="Console.h">
       <Filter>Engine\01. Core</Filter>
     </ClInclude>
-    <ClInclude Include="GameScene.h" />
     <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="IScene.h">
+    <ClInclude Include="GameScene.h">
       <Filter>Engine\03. Scene</Filter>
     </ClInclude>
   </ItemGroup>
