@@ -1,16 +1,21 @@
 #pragma once
+#include "defines.h"
 #include "IScene.h"
+#include "Singleton.h"
 
-class SceneManager
+class SceneManager : public Singleton<SceneManager>
 {
+	friend class Singleton;
+
+protected:
+	SceneManager() : pCurrentScene(nullptr) {}
+	~SceneManager() { SAFE_DELETE(pCurrentScene); }
+
 	IScene* pCurrentScene;
-	// player 등 가지기
 
 public:
 	void Init();
-	void Run();
+	void Update();
+	void Render();
 	void ChangeScene(IScene* newScene);
-	void Quit();
-
-	// getter 만eㄷ들기ㅏ
 };

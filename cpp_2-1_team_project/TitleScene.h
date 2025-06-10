@@ -1,16 +1,10 @@
 #pragma once
 #include "IScene.h"
-#include <iostream>
-#include <fstream>
-#include<io.h>
-#include<fcntl.h>
 
 class TitleScene : public IScene
 {
 public:
-	void Init();
+	void Init() override;
 	void Update() override;
-	void Render();
-
-
+	void Render() override;
 };

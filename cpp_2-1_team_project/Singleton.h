@@ -1,15 +1,18 @@
 #pragma once
 #include "defines.h"
 
-class Single
+template<typename T>
+class Singleton
 {
-	Single();
+protected:
+	Singleton() {}
+	~Singleton() {}
 
 public:
-	static Single* GetInstance()
+	static T* GetInstance()
 	{
 		if (m_instance == nullptr)
-			m_instance = new Single;
+			m_instance = new T;
 
 		return m_instance;
 	}
@@ -20,5 +23,8 @@ public:
 	}
 
 private:
-	static Single* m_instance;
+	static T* m_instance;
 };
+
+template<typename T>
+T* Singleton<T>::m_instance = nullptr;
