@@ -36,18 +36,16 @@ void GameScene::Render()
 			if (_map[i][j] == (char)Tile::Wall)
 				cout << "¡á";
 			else if (_map[i][j] == (char)Tile::Road)
-				cout << "  ";
+				cout << "¡à";
 			else if (_map[i][j] == (char)Tile::Start)
 				cout << "¡Ù";
-			else if (_map[i][j] == (char)Tile::Goal)
-				cout << "¢Í";
 			else if (_map[i][j] == (char)Tile::Imprint)
 				cout << "¢Ã";
 		}
 		cout << endl;
 	}
 	
-	Gotoxy(50, 0);
+	Gotoxy(400, 0);
 	cout << "Stage: " << stage << endl;
 }
 
@@ -69,3 +67,5 @@ void GameScene::SetMap()
 
 	}
 }
+
+
