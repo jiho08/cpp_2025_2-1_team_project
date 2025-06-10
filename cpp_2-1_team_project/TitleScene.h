@@ -7,9 +7,6 @@
 
 class TitleScene : public IScene
 {
-	Console console;
-
-
 public:
 	void Init();
 	void Update() override;

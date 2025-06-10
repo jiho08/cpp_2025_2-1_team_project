@@ -47,7 +47,7 @@ void GameScene::Render()
 		cout << endl;
 	}
 	
-	console.Gotoxy(50, 0);
+	Gotoxy(50, 0);
 	cout << "Stage: " << stage << endl;
 }
 

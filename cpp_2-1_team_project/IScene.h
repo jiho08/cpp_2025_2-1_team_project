@@ -6,5 +6,7 @@ class IScene
 {
 public:
 	virtual ~IScene() {}
-	virtual void Update();
+	virtual void Init() = 0;
+	virtual void Update() = 0;
+	virtual void Render() = 0;
 };
