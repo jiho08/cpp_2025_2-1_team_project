@@ -40,7 +40,7 @@ void TitleScene::Render()
 	
 }
 
-Menu TitleScene::SelectMenu()
+void TitleScene::SelectMenu()
 {
 	Key input = KeyController();
 
