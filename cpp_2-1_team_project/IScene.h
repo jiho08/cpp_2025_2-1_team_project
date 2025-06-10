@@ -1,7 +1,5 @@
 #pragma once
 
-class SceneManager; // 전방 선언
-
 class IScene
 {
 public:
