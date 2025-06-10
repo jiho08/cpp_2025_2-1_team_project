@@ -20,7 +20,5 @@ public:
 private:
 	char _map[MAP_HEIGHT][MAP_WIDTH];
 	void SetMap();
-
-	Console console = Console();
 };
 

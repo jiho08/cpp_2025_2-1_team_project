@@ -1,7 +1,7 @@
 #include "Console.h"
 #include<Windows.h>
 
-void Console::SetConsoleSettings(int _width, int _height, bool _isFullScreen, const std::wstring& _title)
+void SetConsoleSettings(int _width, int _height, bool _isFullScreen, const std::wstring& _title)
 {
 	HWND hwnd = GetConsoleWindow();
 
@@ -22,7 +22,7 @@ void Console::SetConsoleSettings(int _width, int _height, bool _isFullScreen, co
 	}
 }
 
-void Console::SetLockResize()
+void SetLockResize()
 {
 	HWND hwnd = GetConsoleWindow();
 	LONG style = GetWindowLong(hwnd, GWL_STYLE);
@@ -30,7 +30,7 @@ void Console::SetLockResize()
 	SetWindowLong(hwnd, GWL_STYLE, style);
 }
 
-COORD Console::GetConsoleResolution()
+COORD GetConsoleResolution()
 {
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_SCREEN_BUFFER_INFO buf;
@@ -41,7 +41,7 @@ COORD Console::GetConsoleResolution()
 	return { width, height };
 }
 
-void Console::Gotoxy(int _x, int _y)
+void Gotoxy(int _x, int _y)
 {
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	COORD Cur = { _x, _y };
@@ -49,7 +49,7 @@ void Console::Gotoxy(int _x, int _y)
 	SetConsoleCursorPosition(handle, Cur);
 }
 
-BOOL Console::IsGotoxy(int _x, int _y)
+BOOL IsGotoxy(int _x, int _y)
 {
 
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -58,7 +58,7 @@ BOOL Console::IsGotoxy(int _x, int _y)
 	return SetConsoleCursorPosition(handle, Cur);
 }
 
-COORD Console::CurSorPos()
+COORD CurSorPos()
 {
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_SCREEN_BUFFER_INFO buf;
@@ -68,7 +68,7 @@ COORD Console::CurSorPos()
 	return buf.dwCursorPosition;
 }
 
-void Console::SetCursorVisual(bool _isVis, DWORD _size)
+void SetCursorVisual(bool _isVis, DWORD _size)
 {
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_CURSOR_INFO curInfo;
@@ -77,7 +77,7 @@ void Console::SetCursorVisual(bool _isVis, DWORD _size)
 	SetConsoleCursorInfo(handle, &curInfo);
 }
 
-void Console::SetColor(COLOR _textcolor, COLOR _bgcolor)
+void SetColor(COLOR _textcolor, COLOR _bgcolor)
 {
 	int textcolor = (int)_textcolor;
 	int bgcolor = (int)_bgcolor;
@@ -85,7 +85,7 @@ void Console::SetColor(COLOR _textcolor, COLOR _bgcolor)
 	SetConsoleTextAttribute(handle, (bgcolor << 4 | textcolor));
 }
 
-void Console::FrameSync(unsigned int _frame)
+void FrameSync(unsigned int _frame)
 {
 	clock_t oldtime, curtime;
 	oldtime = clock();
@@ -100,7 +100,7 @@ void Console::FrameSync(unsigned int _frame)
 	}
 }
 
-void Console::SetConsoleFont(LPCWSTR _fontname, COORD _size, UINT _weight)
+void SetConsoleFont(LPCWSTR _fontname, COORD _size, UINT _weight)
 {
 	// 콘솔 핸들
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -116,4 +116,3 @@ void Console::SetConsoleFont(LPCWSTR _fontname, COORD _size, UINT _weight)
 	// 폰트 정보 Set
 	SetCurrentConsoleFontEx(handle, false, &cf);
 }
-
