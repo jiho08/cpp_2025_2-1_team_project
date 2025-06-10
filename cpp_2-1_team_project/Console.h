@@ -11,29 +11,22 @@ using std::vector;
 #include<Windows.h>
 #include"Enums.h"
 
+void SetConsoleSettings(int _width, int _height, bool _isFullScreen, const std::wstring& _title);
 
- 
-class Console
-{
-public:
-    void SetConsoleSettings(int _width, int _height, bool _isFullScreen, const std::wstring& _title);
+void SetLockResize();
 
-    void SetLockResize();
+COORD GetConsoleResolution();
 
-    COORD GetConsoleResolution();
+void Gotoxy(int _x, int _y);
 
-    void Gotoxy(int _x, int _y);
+BOOL IsGotoxy(int _x, int _y);
 
-    BOOL IsGotoxy(int _x, int _y);
+COORD CurSorPos();
 
-    COORD CurSorPos();
+void SetCursorVisual(bool _isVis, DWORD _size);
 
-    void SetCursorVisual(bool _isVis, DWORD _size);
+void SetColor(COLOR _textcolor = COLOR::WHITE, COLOR _bgcolor = COLOR::BLACK);
 
-    
+void FrameSync(unsigned int _frame);
 
-    void SetColor(COLOR _textcolor = COLOR::WHITE, COLOR _bgcolor = COLOR::BLACK);
-    void FrameSync(unsigned int _frame);
-    void SetConsoleFont(LPCWSTR _fontname, COORD _size, UINT _weight);
-};
-
+void SetConsoleFont(LPCWSTR _fontname, COORD _size, UINT _weight);

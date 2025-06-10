@@ -4,8 +4,7 @@
 
 void Core::Run()
 {
-	Console console = Console();
-	console.SetConsoleSettings(800, 600, true, TEXT("2-1 Team Project"));
+	SetConsoleSettings(800, 600, true, TEXT("2-1 Team Project"));
 	while (true)
 	{
 		Update();
