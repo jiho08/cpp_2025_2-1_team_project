@@ -135,6 +135,7 @@
     <ClInclude Include="Enums.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="IScene.h" />
+    <ClInclude Include="KeyController.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="TitleScene.h" />
@@ -143,6 +144,7 @@
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="KeyController.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Singleton.cpp" />

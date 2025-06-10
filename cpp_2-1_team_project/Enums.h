@@ -24,6 +24,8 @@ enum class Key
 	A,
 	S,
 	D,
+	SPACE,
+	Fail,
 	End
 };
 

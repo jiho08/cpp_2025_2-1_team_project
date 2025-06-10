@@ -19,6 +19,9 @@ public:
 	void Render();
 private:
 	char _map[MAP_HEIGHT][MAP_WIDTH];
+	//Player _player;
 	void SetMap();
+	//void GameClear();
+
 };
 
