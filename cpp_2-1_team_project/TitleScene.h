@@ -1,6 +1,7 @@
 #pragma once
 #include "IScene.h"
 #include "KeyController.h"
+#include "SceneManager.h"
 #include<iostream>
 #include<fstream>
 #include<io.h>
@@ -18,5 +19,6 @@ private:
 	int menuBtnY = 10;
 	Menu _currentMenu;
 	void SelectMenu();
+	void StartCurrentMenu();
 
 };
