@@ -4,7 +4,7 @@
 
 void Core::Run()
 {
-	SetConsoleSettings(800, 600, true, TEXT("2-1 Team Project"));
+	
 	while (true)
 	{
 		Update();

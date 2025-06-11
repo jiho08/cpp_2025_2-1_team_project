@@ -52,7 +52,8 @@ void TitleScene::SelectMenu()
 		{
 			_currentMenu = (Menu)((int)_currentMenu - 1);
 
-			cout << "";
+			Gotoxy(menuBtnX - 2, menuBtnY + (int)_currentMenu + 1);
+			cout << " ";
 			Gotoxy(menuBtnX - 2, menuBtnY + (int)_currentMenu);
 			cout << ">";
 		}
@@ -63,7 +64,8 @@ void TitleScene::SelectMenu()
 		{
 			_currentMenu = (Menu)((int)_currentMenu + 1);
 
-			cout << "";
+			Gotoxy(menuBtnX - 2, menuBtnY + (int)_currentMenu - 1);
+			cout << " ";
 			Gotoxy(menuBtnX - 2, menuBtnY + (int)_currentMenu);
 			cout << ">";
 		}
@@ -71,12 +73,28 @@ void TitleScene::SelectMenu()
 
 	case Key::SPACE:
 
+		StartCurrentMenu();
 		break;
 
 	default:
 		break;
 	}
 
+}
+
+void TitleScene::StartCurrentMenu()
+{
+
+	switch (_currentMenu)
+	{
+	case Menu::Start:
+		//SceneManager::ChangeScene(new GameSc);
+		break;
+	case Menu::Info:
+		break;
+	case Menu::Quit:
+		break;
+	}
 }
 
 
