@@ -46,9 +46,7 @@
       <Filter>Engine\03. Scene</Filter>
     </ClCompile>
     <ClCompile Include="KeyController.cpp" />
-    <ClCompile Include="InfoScene.cpp">
-      <Filter>Engine\03. Scene</Filter>
-    </ClCompile>
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -71,8 +69,9 @@
     </ClInclude>
     <ClInclude Include="IScene.h" />
     <ClInclude Include="KeyController.h" />
-    <ClInclude Include="InfoScene.h">
-      <Filter>Engine\03. Scene</Filter>
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Structs.h">
+      <Filter>Engine\00. Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

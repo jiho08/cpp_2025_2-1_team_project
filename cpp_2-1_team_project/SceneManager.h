@@ -7,11 +7,10 @@ class SceneManager : public Singleton<SceneManager>
 {
 	friend class Singleton;
 
-protected:
-	SceneManager() : pCurrentScene(nullptr) {}
-	~SceneManager() { SAFE_DELETE(pCurrentScene); }
+	SceneManager() : _pCurrentScene(nullptr) {}
+	~SceneManager() { SAFE_DELETE(_pCurrentScene); }
 
-	IScene* pCurrentScene;
+	IScene* _pCurrentScene;
 
 public:
 	void Init();
