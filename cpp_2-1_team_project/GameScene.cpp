@@ -44,8 +44,10 @@ void GameScene::Render()
 			else if (_map[i][j] == (char)Tile::Road)
 				cout << "бр";
 			else if (_map[i][j] == (char)Tile::Start)
-				// startPos = {i, j};
+			{
+				startPos = {i, j};
 				cout << "бр";
+			}
 			else if (_map[i][j] == (char)Tile::Imprint)
 				cout << "в├";
 			

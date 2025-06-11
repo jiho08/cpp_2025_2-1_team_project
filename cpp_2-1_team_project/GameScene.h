@@ -6,6 +6,7 @@
 #include "defines.h"
 #include "Enums.h"
 #include "IScene.h"
+#include "Player.h"
 using std::cout;
 using std::endl;
 
@@ -19,8 +20,8 @@ public:
 	void Render() override;
 private:
 	char _map[MAP_HEIGHT+1][MAP_WIDTH+1];
-	// POS startPos
-	//Player _player;
+	Position startPos;
+	Player _player;
 	void SetMap();
 	//void GameClear();
 

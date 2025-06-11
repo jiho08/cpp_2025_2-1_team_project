@@ -13,9 +13,9 @@
 class TitleScene : public IScene
 {
 public:
-	void Init();
+	void Init() override;
 	void Update() override;
-	void Render();
+	void Render() override;
 private:
 	int menuBtnX = 35;
 	int menuBtnY = 10;

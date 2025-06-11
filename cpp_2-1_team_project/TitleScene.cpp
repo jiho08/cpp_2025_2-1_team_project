@@ -93,8 +93,8 @@ void TitleScene::StartCurrentMenu()
 		SceneManager::GetInstance()->ChangeScene(newScene);
 		break;
 	case Menu::Info:
-		/*newScene = &InfoScene();
-		SceneManager::GetInstance()->ChangeScene(newScene);*/
+		newScene = new InfoScene();
+		SceneManager::GetInstance()->ChangeScene(newScene);
 		break;
 	case Menu::Quit:
 		
