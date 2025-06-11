@@ -3,7 +3,6 @@
 
 class Player
 {
-private:
 	Position _position;
 	wchar_t _playerSymbol = L'¢Ã';
 
@@ -14,4 +13,11 @@ public:
 	~Player();
 
 	Position GetPos() const;
+	wchar_t GetSymbol() const;
+
+	void MoveUp();
+	void MoveDown();
+	void MoveLeft();
+	void MoveRight();
+	void SetPosition();
 };
