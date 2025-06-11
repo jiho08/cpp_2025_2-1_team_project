@@ -2,6 +2,8 @@
 #include "IScene.h"
 #include "KeyController.h"
 #include "SceneManager.h"
+#include "GameScene.h"
+#include "InfoScene.h"
 #include<iostream>
 #include<fstream>
 #include<io.h>
@@ -11,9 +13,9 @@
 class TitleScene : public IScene
 {
 public:
-	void Init();
+	void Init() override;
 	void Update() override;
-	void Render();
+	void Render() override;
 private:
 	int menuBtnX = 35;
 	int menuBtnY = 10;
