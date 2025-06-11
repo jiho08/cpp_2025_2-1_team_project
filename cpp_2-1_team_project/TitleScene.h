@@ -2,6 +2,8 @@
 #include "IScene.h"
 #include "KeyController.h"
 #include "SceneManager.h"
+#include "GameScene.h"
+#include "InfoScene.h"
 #include<iostream>
 #include<fstream>
 #include<io.h>

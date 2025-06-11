@@ -14,11 +14,12 @@ class GameScene : public IScene
 {
 public:
 	int stage = 1;
-	void Init();
+	void Init() override;
 	void Update() override;
-	void Render();
+	void Render() override;
 private:
-	char _map[MAP_HEIGHT][MAP_WIDTH];
+	char _map[MAP_HEIGHT+1][MAP_WIDTH+1];
+	// POS startPos
 	//Player _player;
 	void SetMap();
 	//void GameClear();

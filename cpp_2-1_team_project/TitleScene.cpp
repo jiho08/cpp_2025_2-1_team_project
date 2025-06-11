@@ -1,5 +1,6 @@
 ﻿#include "TitleScene.h"
 #include "Console.h"
+
 using std::wcout;
 using std::cout;
 
@@ -84,15 +85,19 @@ void TitleScene::SelectMenu()
 
 void TitleScene::StartCurrentMenu()
 {
-
+	IScene* newScene = nullptr;
 	switch (_currentMenu)
 	{
 	case Menu::Start:
-		//SceneManager::ChangeScene(new GameSc);
+		newScene = new GameScene();
+		SceneManager::GetInstance()->ChangeScene(newScene);
 		break;
 	case Menu::Info:
+		/*newScene = &InfoScene();
+		SceneManager::GetInstance()->ChangeScene(newScene);*/
 		break;
 	case Menu::Quit:
+		
 		break;
 	}
 }

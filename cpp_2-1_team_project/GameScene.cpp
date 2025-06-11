@@ -2,6 +2,7 @@
 
 void GameScene::Init()
 {
+	system("cls");
 	SetMap();
 }
 
@@ -12,14 +13,15 @@ void GameScene::Update()
 
 void GameScene::Render()
 {
-	for (int i = 0; i < MAP_HEIGHT; ++i)
+	Gotoxy(0, 0);
+	for (int i = 0; i < MAP_HEIGHT; i++)
 	{
-		for (int j = 0; j < MAP_WIDTH; ++j)
+		for (int j = 0; j < MAP_WIDTH; j++)
 		{
 			/*if (_player->position.tPos.x == j &&
 				_player->position.tPos.y == i)
 				cout << "б╫";
-			else
+			else 
 			{
 				if (_map[i][j] == (char)Tile::Wall)
 					cout << "бс";
@@ -34,13 +36,19 @@ void GameScene::Render()
 			}*/
 
 			if (_map[i][j] == (char)Tile::Wall)
+			{
+				SetColor(COLOR::BLACK, COLOR::BLACK);
 				cout << "бс";
+				SetColor();
+			}
 			else if (_map[i][j] == (char)Tile::Road)
 				cout << "бр";
 			else if (_map[i][j] == (char)Tile::Start)
-				cout << "б┘";
+				// startPos = {i, j};
+				cout << "бр";
 			else if (_map[i][j] == (char)Tile::Imprint)
 				cout << "в├";
+			
 		}
 		cout << endl;
 	}
@@ -54,7 +62,7 @@ void GameScene::SetMap()
 	std::ifstream mapFile("Stage" + std::to_string(stage) + ".txt");
 	if (mapFile.is_open())
 	{
-		for (int i = 0; i < MAP_HEIGHT; ++i)
+		for (int i = 0; i < MAP_HEIGHT; i++)
 		{
 			mapFile >> _map[i];
 		}
