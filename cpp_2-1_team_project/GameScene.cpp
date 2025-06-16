@@ -1,4 +1,5 @@
 #include "GameScene.h"
+#include "KeyController.h"
 
 GameScene::GameScene()
 {
@@ -7,63 +8,68 @@ GameScene::GameScene()
 	_map = vector(MAP_HEIGHT, vector<char>(MAP_WIDTH));
 }
 
+GameScene::~GameScene()
+{
+	delete _player;
+	_player = nullptr;
+}
+
 void GameScene::Init()
 {
 	system("cls");
 	SetMap();
+	Render();
 	_player = new Player(startPos);
 }
 
 void GameScene::Update()
 {
 	Render();
+	MovePlayer();
 }
 
 void GameScene::Render()
 {
 	Gotoxy(0, 0);
+	cout << "Stage: " << stage << endl;
+	Gotoxy(0, 2);
 	for (int i = 0; i < MAP_HEIGHT; i++)
 	{
 		for (int j = 0; j < MAP_WIDTH; j++)
 		{
 			Position currentPos = Position(i, j);
+			if (_map[i][j] == (char)Tile::Wall)
+			{
+				SetColor(COLOR::BLACK, COLOR::BLACK);
+				cout << "бс";
+				SetColor();
+			}
+			else if (_map[i][j] == (char)Tile::Road)
+				cout << "бр";
+			else if (_map[i][j] == (char)Tile::Start)
+			{
+				startPos = { i, j };
+				_map[i][j] = '0';
+				cout << "бр";
+			}
+			else if (_map[i][j] == (char)Tile::Imprint)
+			{
+				SetColor(COLOR::LIGHT_YELLOW, COLOR::LIGHT_YELLOW);
+				cout << "в├";
+				SetColor();
+			}
+
 			if (_player->GetPos() == currentPos)
 			{
 				_map[i][j] = '2';
+				Gotoxy(i, j);
 				cout << "в├";
+				
 			}
-			else 
-			{
-				if (_map[i][j] == (char)Tile::Wall)
-				{
-					SetColor(COLOR::BLACK, COLOR::BLACK);
-					cout << "бс";
-					SetColor();
-				}
-				else if (_map[i][j] == (char)Tile::Road)
-					cout << "бр";
-				else if (_map[i][j] == (char)Tile::Start)
-				{
-					startPos = { i, j };
-					_map[i][j] = '0';
-					cout << "бр";
-				}
-				else if (_map[i][j] == (char)Tile::Imprint)
-				{
-					SetColor(COLOR::LIGHT_YELLOW, COLOR::LIGHT_YELLOW);
-					cout << "в├";
-					SetColor();
-				}
-			}
-
-			
-			
-			
 		}
 		cout << endl;
 	}
-	Gotoxy(0, 7);
-	cout << "Stage: " << stage << endl;
+	
 	
 }
 
@@ -97,6 +103,28 @@ void GameScene::Restart()
 	delete _player;
 	_player = nullptr;
 	Init();
+}
+
+void GameScene::MovePlayer()
+{
+	input = KeyController();
+	switch (input)
+	{
+	case Key::W:
+		_player->MoveUp();
+		break;
+	case Key::A:
+		_player->MoveLeft();
+		break;
+	case Key::S:
+		_player->MoveDown();
+		break;
+	case Key::D:
+		_player->MoveRight();
+		break;
+	default:
+		break;
+	}
 }
 
 
