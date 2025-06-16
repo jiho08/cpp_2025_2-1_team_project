@@ -24,7 +24,7 @@ void Player::Update()
 void Player::Render() const
 {
 	Gotoxy(_pos.x, _pos.y);
-	//wcout << GetSymbol();
+	wcout << GetSymbol();
 }
 
 void Player::Move(Dir dir)

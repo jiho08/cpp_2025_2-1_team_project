@@ -1,5 +1,4 @@
 #include "Core.h"
-#include "Enums.h"
 #include "Console.h"
 #include "defines.h"
 #include "ICommand.h"
@@ -37,6 +36,8 @@ void Core::Run()
 
 void Core::Init()
 {
+	SetConsoleSettings(800, 600, false, TEXT("2-1 Team Project"));
+	SetCursorVisual(false, 50);
 }
 
 void Core::Update()
@@ -51,18 +52,6 @@ void Core::Update()
 
 	_player->Update();
 
-	//switch (currentScene)
-	//{
-	//case Title:
-
-	//	break;
-	//case Game:
-	//	break;
-	//case Setting:
-	//	break;
-	//case Exit:
-	//	break;
-	//}
 }
 
 void Core::Render()

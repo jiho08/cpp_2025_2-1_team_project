@@ -2,10 +2,8 @@
 #include "Imovable.h"
 #include "Object.h"
 
-MoveCommand::MoveCommand(Dir dir)
-	: _dir(dir)
+MoveCommand::MoveCommand(Dir dir) : _dir(dir)
 {
-
 }
 
 void MoveCommand::Execute(Object* actor)
