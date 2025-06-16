@@ -2,6 +2,8 @@
 
 GameScene::GameScene()
 {
+	_player = nullptr;
+	startPos = { 0, 0 };
 	_map = vector(MAP_HEIGHT, vector<char>(MAP_WIDTH));
 }
 
@@ -60,9 +62,9 @@ void GameScene::Render()
 		}
 		cout << endl;
 	}
-	
-	Gotoxy(400, 0);
+	Gotoxy(0, 7);
 	cout << "Stage: " << stage << endl;
+	
 }
 
 vector<vector<char>> GameScene::GetMap()
@@ -77,7 +79,8 @@ void GameScene::SetMap()
 	{
 		for (int i = 0; i < MAP_HEIGHT; i++)
 		{
-			mapFile.getline(_map[i], MAP_WIDTH);
+			
+			mapFile.getline(_map[i].data(), MAP_WIDTH + 1);
 		}
 		mapFile.close();
 		return;
