@@ -86,6 +86,7 @@ void TitleScene::SelectMenu()
 void TitleScene::StartCurrentMenu()
 {
 	IScene* newScene = nullptr;
+	
 	switch (_currentMenu)
 	{
 	case Menu::Start:
