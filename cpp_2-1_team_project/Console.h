@@ -1,5 +1,7 @@
 #pragma once
 #include<iostream>
+
+#include "Structs.h"
 using std::cout;
 using std::wcout;
 using std::endl;
@@ -15,7 +17,7 @@ void SetConsoleSettings(int _width, int _height, bool _isFullScreen, const std::
 
 void SetLockResize();
 
-COORD GetConsoleResolution();
+Position GetConsoleResolution();
 
 void Gotoxy(int _x, int _y);
 

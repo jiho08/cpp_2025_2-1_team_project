@@ -1,19 +1,23 @@
 #include "SceneManager.h"
 #include "TitleScene.h"
 #include "Console.h"
+#include "Core.h"
 
 int main()
 {
-	SetConsoleSettings(800, 600, false, TEXT("2-1 Team Project"));
-	SetCursorVisual(false, 50);
+	Core core;
+	core.Run();
 
-	SceneManager::GetInstance()->ChangeScene(new TitleScene());
-
-	while (true)
-	{
-		SceneManager::GetInstance()->Update();
-		SceneManager::GetInstance()->Render();
-	}
-
-	SceneManager::DestroyInstance();
+	//SetConsoleSettings(800, 600, false, TEXT("2-1 Team Project"));
+	//SetCursorVisual(false, 50);
+	//
+	//SceneManager::GetInstance()->ChangeScene(new TitleScene());
+	//
+	//while (true)
+	//{
+	//	SceneManager::GetInstance()->Update();
+	//	SceneManager::GetInstance()->Render();
+	//}
+	//
+	//SceneManager::DestroyInstance();
 }

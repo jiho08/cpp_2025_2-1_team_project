@@ -1,6 +1,8 @@
 #include "Console.h"
 #include<Windows.h>
 
+#include "Structs.h"
+
 void SetConsoleSettings(int _width, int _height, bool _isFullScreen, const std::wstring& _title)
 {
 	HWND hwnd = GetConsoleWindow();
@@ -30,7 +32,7 @@ void SetLockResize()
 	SetWindowLong(hwnd, GWL_STYLE, style);
 }
 
-COORD GetConsoleResolution()
+Position GetConsoleResolution()
 {
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_SCREEN_BUFFER_INFO buf;
