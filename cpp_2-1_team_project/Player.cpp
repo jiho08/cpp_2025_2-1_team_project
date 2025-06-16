@@ -1,5 +1,9 @@
 #include "Player.h"
 
+Player::Player()
+{
+}
+
 Player::Player(Position startPos)
 {
 	_position = startPos;

@@ -10,7 +10,7 @@ public:
 	Player();
 	Player(Position startPos);
 
-	~Player();
+	~Player() = default;
 
 	Position GetPos() const;
 	wchar_t GetSymbol() const;
@@ -19,5 +19,5 @@ public:
 	void MoveDown();
 	void MoveLeft();
 	void MoveRight();
-	void SetPosition();
+	void SetPosition(Position newPos);
 };
