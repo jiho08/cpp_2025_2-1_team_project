@@ -1,12 +1,9 @@
 #include "Player.h"
+#include "Console.h"
 
-Player::Player()
+Player::Player(Position pos) : Object(pos)
 {
-}
 
-Player::Player(Position startPos)
-{
-	_position = startPos;
 }
 
 Position Player::GetPos() const
@@ -19,27 +16,39 @@ wchar_t Player::GetSymbol() const
 	return _playerSymbol;
 }
 
-void Player::MoveUp()
+void Player::Update()
 {
-	--_position.y;
+
 }
 
-void Player::MoveDown()
+void Player::Render() const
 {
-	++_position.y;
+	Gotoxy(_pos.x, _pos.y);
+	wcout << GetSymbol();
 }
 
-void Player::MoveLeft()
+void Player::Move(Dir dir)
 {
-	--_position.x;
-}
+	switch (dir)
+	{
+	case Dir::UP:
+		--_pos.y;
+		break;
 
-void Player::MoveRight()
-{
-	++_position.x;
+	case Dir::DOWN:
+		++_pos.y;
+		break;
+
+	case Dir::LEFT:
+		--_pos.x;
+		break;
+
+	case Dir::RIGHT:
+		++_pos.x;
+		break;
+	}
 }
 
 void Player::SetPosition(Position newPos)
 {
-	_position = newPos;
 }

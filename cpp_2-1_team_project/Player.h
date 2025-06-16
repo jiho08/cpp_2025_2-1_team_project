@@ -1,23 +1,22 @@
 #pragma once
+#include "Object.h"
 #include "Structs.h"
+#include "IMovable.h"
 
-class Player
+class Player : public Object, public IMovable
 {
 	Position _position;
 	wchar_t _playerSymbol = L'¢Ã';
 
 public:
-	Player();
-	Player(Position startPos);
-
-	~Player() = default;
+	Player(Position startPos = {0, 0});
 
 	Position GetPos() const;
 	wchar_t GetSymbol() const;
 
-	void MoveUp();
-	void MoveDown();
-	void MoveLeft();
-	void MoveRight();
+public:
+	void Update() override;
+	void Render() const override;
+	void Move(Dir dir) override;
 	void SetPosition(Position newPos);
 };

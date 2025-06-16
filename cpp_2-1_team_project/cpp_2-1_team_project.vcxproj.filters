@@ -26,6 +26,12 @@
     <Filter Include="Engine\05. Module">
       <UniqueIdentifier>{08b95297-5da7-41d1-942d-3825a4cf98c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\05. Module\Command">
+      <UniqueIdentifier>{0101af37-5db1-48eb-b84b-83909def87ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\02. Object\Interface">
+      <UniqueIdentifier>{b13ff7cd-2355-44f8-b03b-779eab25a83f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -47,6 +53,12 @@
     </ClCompile>
     <ClCompile Include="KeyController.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="InfoScene.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="ICommand.cpp" />
+    <ClCompile Include="MoveCommand.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="IMovable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -73,5 +85,11 @@
     <ClInclude Include="Structs.h">
       <Filter>Engine\00. Headers</Filter>
     </ClInclude>
+    <ClInclude Include="InfoScene.h" />
+    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="ICommand.h" />
+    <ClInclude Include="MoveCommand.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="IMovable.h" />
   </ItemGroup>
 </Project>
