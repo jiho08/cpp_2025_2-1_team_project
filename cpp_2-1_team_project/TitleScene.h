@@ -16,6 +16,7 @@ public:
 	void Init() override;
 	void Update() override;
 	void Render() override;
+	Scene* GetScene() const override;
 private:
 	int menuBtnX = 35;
 	int menuBtnY = 10;

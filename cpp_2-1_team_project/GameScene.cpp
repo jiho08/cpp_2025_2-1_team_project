@@ -7,6 +7,10 @@ GameScene::GameScene()
 	_map = vector(MAP_HEIGHT, vector<char>(MAP_WIDTH));
 }
 
+GameScene::~GameScene()
+{
+}
+
 void GameScene::Init()
 {
 	system("cls");
@@ -65,6 +69,11 @@ void GameScene::Render()
 	Gotoxy(0, 7);
 	cout << "Stage: " << stage << endl;
 	
+}
+
+Scene* GameScene::GetScene() const
+{
+	return _nextScene;
 }
 
 vector<vector<char>> GameScene::GetMap()

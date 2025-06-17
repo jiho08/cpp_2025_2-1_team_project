@@ -38,6 +38,11 @@ void TitleScene::Render()
 	
 }
 
+Scene* TitleScene::GetScene() const
+{
+	return _nextScene;
+}
+
 void TitleScene::SelectMenu()
 {
 	KEY input = KeyController();
@@ -87,20 +92,20 @@ void TitleScene::StartCurrentMenu()
 	switch (_currentMenu)
 	{
 	case MENU::Start:
-		newScene = new GameScene();
+		_nextScene = new GameScene();
 		/*SceneManager::GetInstance()->ChangeScene(newScene);*/
 		
 
 		break;
 	case MENU::Info:
-		newScene = new InfoScene();
+		_nextScene = new InfoScene();
+
 		//SceneManager::GetInstance()->ChangeScene(newScene);
 		break;
 	case MENU::Quit:
 		
 		break;
 	}
-	return newScene;
 }
 
 
