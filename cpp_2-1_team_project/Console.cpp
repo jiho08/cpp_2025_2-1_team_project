@@ -20,7 +20,7 @@ void SetConsoleSettings(int _width, int _height, bool _isFullScreen, const std::
 		style &= ~WS_CAPTION;
 		SetWindowLong(hwnd, GWL_STYLE, style);
 
-		MoveWindow(hwnd, 0, 0, _width, _height, true);
+		MoveWindow(hwnd, 260, 60, _width, _height, true);
 	}
 }
 
