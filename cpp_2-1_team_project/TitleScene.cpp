@@ -8,6 +8,21 @@ using std::cout;
 
 void TitleScene::Init()
 {
+	std::ifstream mapFile("highStage.txt");
+	if (mapFile.good())
+	{
+		if (mapFile.is_open())
+		{
+			mapFile >> highStage;
+			mapFile.close();
+
+		}
+		else
+		{
+			cout << "highStage.txt 파일을 열 수 없습니다." << endl;
+		}
+
+	}
 }
 
 void TitleScene::Update()
