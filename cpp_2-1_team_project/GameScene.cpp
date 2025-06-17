@@ -28,11 +28,15 @@ void GameScene::Update()
 
 void GameScene::Render()
 {
-	Gotoxy(0, 0);
+	Gotoxy(42, 8);
+	cout << "Stage: " << stage << endl;
+
+	Gotoxy(40, 15);
 	for (int i = 0; i < MAP_HEIGHT; i++)
 	{
 		for (int j = 0; j < MAP_WIDTH; j++)
 		{
+			
 			Position currentPos = { j, i };
 			if (_player->GetPos() == currentPos)
 			{
@@ -63,15 +67,11 @@ void GameScene::Render()
 					SetColor();
 				}
 			}
-
-			
-			
-			
 		}
 		cout << endl;
+		Gotoxy(40, 15 + i + 1);
 	}
-	Gotoxy(0, 7);
-	cout << "Stage: " << stage << endl;
+	
 	
 }
 

@@ -12,10 +12,12 @@ Position Player::GetPos() const
 	return _pos;
 }
 
+
 string Player::GetSymbol() const
 {
 	return _playerSymbol;
 }
+
 
 void Player::Update()
 {

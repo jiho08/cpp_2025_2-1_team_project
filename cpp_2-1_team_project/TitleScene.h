@@ -17,8 +17,8 @@ public:
 	void Update() override;
 	void Render() override;
 private:
-	int menuBtnX = 35;
-	int menuBtnY = 10;
+	int menuBtnX = 2;
+	int menuBtnY = 20;
 	MENU _currentMenu;
 	void SelectMenu();
 	void StartCurrentMenu();

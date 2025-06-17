@@ -2,11 +2,13 @@
 #include "Object.h"
 #include "Structs.h"
 #include "IMovable.h"
+#include<string>
+using std::string;
 
 class Player : public Object, public IMovable
 {
 	Position _position;
-	string _playerSymbol = "¢Ã";
+	string _playerSymbol = "¡Ü";
 
 public:
 	Player(Position startPos = {0, 0});
