@@ -14,12 +14,14 @@ Core::Core()
 	_resolution = GetConsoleResolution();
 	_inputHandler = new InputHandler;
 	_player = new Player({ _resolution.x / 2, _resolution.y / 2 });
+	
 }
 
 Core::~Core()
 {
 	SAFE_DELETE(_player)
 	SAFE_DELETE(_inputHandler)
+	
 }
 
 void Core::Run()
@@ -38,6 +40,8 @@ void Core::Init()
 {
 	SetConsoleSettings(800, 600, false, TEXT("2-1 Team Project"));
 	SetCursorVisual(false, 50);
+	_sceneManager->Init();
+
 }
 
 void Core::Update()
@@ -49,13 +53,13 @@ void Core::Update()
 		cmd->Execute(_player);
 		delete cmd; // 호출한 core가 delete를 해야 누수가 안남
 	}
-
+	_sceneManager->Update();
 	_player->Update();
-
 }
 
 void Core::Render()
 {
+	_sceneManager->Render();
 	_player->Render();
 }
 

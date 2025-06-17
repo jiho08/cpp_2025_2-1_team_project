@@ -24,8 +24,7 @@ void GameScene::Init()
 
 void GameScene::Update()
 {
-	Render();
-	MovePlayer();
+
 }
 
 void GameScene::Render()
@@ -63,7 +62,6 @@ void GameScene::Render()
 			{
 				_map[i][j] = '2';
 				Gotoxy(i, j);
-				cout << "¢Ã";
 				
 			}
 		}
@@ -105,26 +103,6 @@ void GameScene::Restart()
 	Init();
 }
 
-void GameScene::MovePlayer()
-{
-	input = KeyController();
-	switch (input)
-	{
-	case Key::W:
-		_player->MoveUp();
-		break;
-	case Key::A:
-		_player->MoveLeft();
-		break;
-	case Key::S:
-		_player->MoveDown();
-		break;
-	case Key::D:
-		_player->MoveRight();
-		break;
-	default:
-		break;
-	}
-}
+
 
 

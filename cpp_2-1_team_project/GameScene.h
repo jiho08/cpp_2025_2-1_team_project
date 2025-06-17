@@ -31,6 +31,5 @@ public:
 	void SetMap();
 	//void GameClear();
 	void Restart();
-	void MovePlayer();
 };
 

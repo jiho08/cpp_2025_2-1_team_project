@@ -8,7 +8,7 @@ Player::Player(Position pos) : Object(pos)
 
 Position Player::GetPos() const
 {
-	return _position;
+	return _pos;
 }
 
 wchar_t Player::GetSymbol() const

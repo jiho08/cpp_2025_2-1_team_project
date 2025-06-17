@@ -1,6 +1,7 @@
 #pragma once
 #include "Enums.h"
 #include "Structs.h"
+#include "SceneManager.h"
 
 class Object;
 class InputHandler;
@@ -24,5 +25,5 @@ private:
 	Object* _player;
 	InputHandler* _inputHandler;
 	Position _resolution;
-	Scene _currentScene;
+	SceneManager* _sceneManager;
 };
