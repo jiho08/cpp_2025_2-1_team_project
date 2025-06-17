@@ -52,13 +52,15 @@
       <Filter>Engine\03. Scene</Filter>
     </ClCompile>
     <ClCompile Include="KeyController.cpp" />
-    <ClCompile Include="Player.cpp" />
     <ClCompile Include="InfoScene.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="MoveCommand.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="IMovable.cpp" />
+    <ClCompile Include="Player.cpp">
+      <Filter>Engine\05. Module</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">

@@ -57,6 +57,13 @@ void Core::Update()
 	_currentScene->Update();
 	_player->Update();
 
+	Scene* newScene = _currentScene->GetScene();
+
+	if (newScene)
+	{
+		_currentScene = newScene;
+	}
+
 }
 
 void Core::Render()
