@@ -40,28 +40,44 @@
     <ClCompile Include="Core.cpp">
       <Filter>Engine\01. Core</Filter>
     </ClCompile>
-    <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="TitleScene.cpp">
       <Filter>Engine\03. Scene</Filter>
     </ClCompile>
     <ClCompile Include="Console.cpp">
       <Filter>Engine\01. Core</Filter>
     </ClCompile>
-    <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="GameScene.cpp">
       <Filter>Engine\03. Scene</Filter>
     </ClCompile>
-    <ClCompile Include="KeyController.cpp" />
-    <ClCompile Include="InputHandler.cpp" />
-    <ClCompile Include="ICommand.cpp" />
-    <ClCompile Include="MoveCommand.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="IMovable.cpp" />
-    <ClCompile Include="Player.cpp">
-      <Filter>Engine\05. Module</Filter>
-    </ClCompile>
     <ClCompile Include="InfoScene.cpp">
       <Filter>Engine\03. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ICommand.cpp">
+      <Filter>Engine\05. Module\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="IMovable.cpp">
+      <Filter>Engine\02. Object\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>Engine\05. Module\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyController.cpp">
+      <Filter>Engine\05. Module</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveCommand.cpp">
+      <Filter>Engine\05. Module\Command</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Engine\02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Engine\02. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Engine\03. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Singleton.cpp">
+      <Filter>Engine\05. Module</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -71,33 +87,53 @@
     <ClInclude Include="defines.h">
       <Filter>Engine\00. Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Singleton.h" />
     <ClInclude Include="TitleScene.h">
       <Filter>Engine\03. Scene</Filter>
     </ClInclude>
     <ClInclude Include="Console.h">
       <Filter>Engine\01. Core</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManager.h" />
     <ClInclude Include="GameScene.h">
       <Filter>Engine\03. Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="KeyController.h" />
-    <ClInclude Include="Player.h" />
     <ClInclude Include="Structs.h">
       <Filter>Engine\00. Headers</Filter>
     </ClInclude>
-    <ClInclude Include="InputHandler.h" />
-    <ClInclude Include="ICommand.h" />
-    <ClInclude Include="MoveCommand.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="IMovable.h" />
     <ClInclude Include="Enums.h">
       <Filter>Engine\00. Headers</Filter>
     </ClInclude>
     <ClInclude Include="InfoScene.h">
       <Filter>Engine\03. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ICommand.h">
+      <Filter>Engine\05. Module\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="IMovable.h">
+      <Filter>Engine\02. Object\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>Engine\05. Module\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyController.h">
+      <Filter>Engine\05. Module</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveCommand.h">
+      <Filter>Engine\05. Module\Command</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Engine\02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Engine\02. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Engine\03. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Engine\03. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Engine\05. Module</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

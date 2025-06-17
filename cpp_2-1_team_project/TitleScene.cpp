@@ -104,5 +104,3 @@ void TitleScene::StartCurrentMenu()
 		break;
 	}
 }
-
-
