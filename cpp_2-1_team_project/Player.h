@@ -17,6 +17,6 @@ public:
 public:
 	void Update() override;
 	void Render() const override;
-	void Move(Dir dir) override;
+	void Move(DIR dir) override;
 	void SetPosition(Position newPos);
 };

@@ -24,5 +24,5 @@ private:
 	Object* _player;
 	InputHandler* _inputHandler;
 	Position _resolution;
-	Scene _currentScene;
+	SCENE _currentScene;
 };

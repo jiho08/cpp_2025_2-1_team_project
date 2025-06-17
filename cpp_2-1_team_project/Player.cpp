@@ -27,23 +27,23 @@ void Player::Render() const
 	wcout << GetSymbol();
 }
 
-void Player::Move(Dir dir)
+void Player::Move(DIR dir)
 {
 	switch (dir)
 	{
-	case Dir::UP:
+	case DIR::UP:
 		--_pos.y;
 		break;
 
-	case Dir::DOWN:
+	case DIR::DOWN:
 		++_pos.y;
 		break;
 
-	case Dir::LEFT:
+	case DIR::LEFT:
 		--_pos.x;
 		break;
 
-	case Dir::RIGHT:
+	case DIR::RIGHT:
 		++_pos.x;
 		break;
 	}

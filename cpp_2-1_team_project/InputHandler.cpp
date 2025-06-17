@@ -4,10 +4,10 @@
 
 InputHandler::InputHandler()
 {
-	_keys.push_back({ 'W', Dir::UP });
-	_keys.push_back({ 'S', Dir::DOWN });
-	_keys.push_back({ 'A', Dir::LEFT });
-	_keys.push_back({ 'D', Dir::RIGHT });
+	_keys.push_back({ 'W', DIR::UP });
+	_keys.push_back({ 'S', DIR::DOWN });
+	_keys.push_back({ 'A', DIR::LEFT });
+	_keys.push_back({ 'D', DIR::RIGHT });
 }
 
 ICommand* InputHandler::HandleInput()

@@ -2,7 +2,7 @@
 #include "Imovable.h"
 #include "Object.h"
 
-MoveCommand::MoveCommand(Dir dir) : _dir(dir)
+MoveCommand::MoveCommand(DIR dir) : _dir(dir)
 {
 }
 

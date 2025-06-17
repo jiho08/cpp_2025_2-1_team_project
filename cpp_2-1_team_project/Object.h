@@ -15,7 +15,7 @@ public:
 	const Position& GetPos() const { return _pos; }
 
 	//public:
-	//	void Move(Dir dir);
+	//	void Move(DIR dir);
 
 protected:
 	Position _pos;

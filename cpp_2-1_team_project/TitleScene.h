@@ -1,5 +1,5 @@
 #pragma once
-#include "IScene.h"
+#include "Scene.h"
 #include "KeyController.h"
 #include "SceneManager.h"
 #include "GameScene.h"
@@ -10,7 +10,7 @@
 #include <fcntl.h>
 
 
-class TitleScene : public IScene
+class TitleScene : public Scene
 {
 public:
 	void Init() override;
@@ -19,7 +19,7 @@ public:
 private:
 	int menuBtnX = 35;
 	int menuBtnY = 10;
-	Menu _currentMenu;
+	MENU _currentMenu;
 	void SelectMenu();
 	void StartCurrentMenu();
 

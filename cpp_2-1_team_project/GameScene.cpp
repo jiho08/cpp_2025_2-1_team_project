@@ -34,21 +34,21 @@ void GameScene::Render()
 			}
 			else 
 			{
-				if (_map[i][j] == (char)Tile::Wall)
+				if (_map[i][j] == (char)TILE::Wall)
 				{
 					SetColor(COLOR::BLACK, COLOR::BLACK);
 					cout << "бс";
 					SetColor();
 				}
-				else if (_map[i][j] == (char)Tile::Road)
+				else if (_map[i][j] == (char)TILE::Road)
 					cout << "бр";
-				else if (_map[i][j] == (char)Tile::Start)
+				else if (_map[i][j] == (char)TILE::Start)
 				{
 					startPos = { i, j };
 					_map[i][j] = '0';
 					cout << "бр";
 				}
-				else if (_map[i][j] == (char)Tile::Imprint)
+				else if (_map[i][j] == (char)TILE::Imprint)
 				{
 					SetColor(COLOR::LIGHT_YELLOW, COLOR::LIGHT_YELLOW);
 					cout << "в├";

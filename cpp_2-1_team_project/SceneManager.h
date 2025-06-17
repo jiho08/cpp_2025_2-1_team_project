@@ -1,6 +1,6 @@
 #pragma once
 #include "defines.h"
-#include "IScene.h"
+#include "Scene.h"
 #include "Singleton.h"
 
 class SceneManager : public Singleton<SceneManager>
@@ -10,11 +10,11 @@ class SceneManager : public Singleton<SceneManager>
 	SceneManager() : _pCurrentScene(nullptr) {}
 	~SceneManager() { SAFE_DELETE(_pCurrentScene); }
 
-	IScene* _pCurrentScene;
+	Scene* _pCurrentScene;
 
 public:
 	void Init();
 	void Update();
 	void Render();
-	void ChangeScene(IScene* newScene);
+	void ChangeScene(Scene* newScene);
 };
