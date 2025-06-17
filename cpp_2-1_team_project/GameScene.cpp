@@ -2,25 +2,28 @@
 
 GameScene::GameScene()
 {
-	_player = nullptr;
-	startPos = { 0, 0 };
+	system("cls");
 	_map = vector(MAP_HEIGHT, vector<char>(MAP_WIDTH));
+
+	SetMap();
+
+	_player = new Player(startPos);
 }
 
 GameScene::~GameScene()
 {
+	SAFE_DELETE(_player);
 }
 
 void GameScene::Init()
 {
-	system("cls");
-	SetMap();
-	_player = new Player(startPos);
+	
+	
 }
 
 void GameScene::Update()
 {
-	Render();
+	_player->Update();
 }
 
 void GameScene::Render()
@@ -30,7 +33,7 @@ void GameScene::Render()
 	{
 		for (int j = 0; j < MAP_WIDTH; j++)
 		{
-			Position currentPos = Position(i, j);
+			Position currentPos = { j, i };
 			if (_player->GetPos() == currentPos)
 			{
 				_map[i][j] = '2';
@@ -38,9 +41,10 @@ void GameScene::Render()
 			}
 			else 
 			{
+				Position currentPos = Position(i, j);
 				if (_map[i][j] == (char)TILE::Wall)
 				{
-					SetColor(COLOR::BLACK, COLOR::BLACK);
+					SetColor(COLOR::WHITE, COLOR::WHITE);
 					cout << "бс";
 					SetColor();
 				}
@@ -54,7 +58,7 @@ void GameScene::Render()
 				}
 				else if (_map[i][j] == (char)TILE::Imprint)
 				{
-					SetColor(COLOR::LIGHT_YELLOW, COLOR::LIGHT_YELLOW);
+					SetColor(COLOR::LIGHT_YELLOW);
 					cout << "в├";
 					SetColor();
 				}
@@ -71,10 +75,6 @@ void GameScene::Render()
 	
 }
 
-Scene* GameScene::GetScene() const
-{
-	return _nextScene;
-}
 
 vector<vector<char>> GameScene::GetMap()
 {
