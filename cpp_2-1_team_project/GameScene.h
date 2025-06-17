@@ -3,11 +3,15 @@
 #include <vector>
 #include <fstream>
 #include <iostream>
+#include <filesystem>
 #include "Console.h"
 #include "defines.h"
 #include "Enums.h"
 #include "Scene.h"
 #include "Player.h"
+#include "KeyController.h"
+#include "SceneManager.h"
+#include "TitleScene.h"
 using std::cout;
 using std::endl;
 using std::vector;
@@ -32,5 +36,6 @@ public:
 	void SetMap();
 	//void GameClear();
 	void Restart();
+	void Exit();
 };
 

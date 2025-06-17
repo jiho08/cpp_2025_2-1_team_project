@@ -1,12 +1,13 @@
 #include "GameScene.h"
 
+
 GameScene::GameScene()
 {
 	system("cls");
 	_map = vector(MAP_HEIGHT, vector<char>(MAP_WIDTH));
 
 	SetMap();
-
+	
 	_player = new Player(startPos);
 }
 
@@ -24,6 +25,12 @@ void GameScene::Init()
 void GameScene::Update()
 {
 	_player->Update();
+	input = KeyController();
+	if (input == KEY::ESC)
+	{
+		SceneManager::GetInstance()->ChangeScene(new TitleScene());
+		return;
+	}
 }
 
 void GameScene::Render()
@@ -97,7 +104,6 @@ void GameScene::SetMap()
 	else
 	{
 		cout << "맵 파일을 열 수 없습니다.";
-
 	}
 }
 
@@ -106,6 +112,24 @@ void GameScene::Restart()
 	delete _player;
 	_player = nullptr;
 	Init();
+
+
+}
+
+void GameScene::Exit()
+{
+	
+
+	std::ofstream outFile("highStage.txt");
+	if (outFile.is_open())
+	{
+		outFile << stage;
+		outFile.close();
+	}
+	else
+	{
+		cout << "파일을 열 수 없습니다." << endl;
+	}
 }
 
 
