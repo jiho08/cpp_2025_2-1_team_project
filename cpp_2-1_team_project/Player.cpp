@@ -12,7 +12,7 @@ Position Player::GetPos() const
 	return _pos;
 }
 
-wchar_t Player::GetSymbol() const
+string Player::GetSymbol() const
 {
 	return _playerSymbol;
 }

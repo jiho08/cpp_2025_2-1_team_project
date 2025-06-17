@@ -37,7 +37,7 @@ void GameScene::Render()
 			if (_player->GetPos() == currentPos)
 			{
 				_map[i][j] = '2';
-				cout << "¢Ã";
+				cout << _player->GetSymbol();
 			}
 			else 
 			{
