@@ -27,7 +27,7 @@ public:
 	vector<vector<char>> _map;
 	Position startPos;
 	Player* _player;
-	Key input;
+	KEY input;
 	void SetMap();
 	//void GameClear();
 	void Restart();

@@ -14,6 +14,7 @@ public:
 
 public:
 	void Run();
+	void SetCurrentScene(Scene* scene) { _currentScene = scene; };
 
 private:
 	void Init();
