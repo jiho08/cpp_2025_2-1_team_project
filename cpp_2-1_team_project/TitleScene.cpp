@@ -12,10 +12,7 @@ void TitleScene::Init()
 
 void TitleScene::Update()
 {
-	Render();
-	
 	SelectMenu();
-
 }
 
 void TitleScene::Render()
