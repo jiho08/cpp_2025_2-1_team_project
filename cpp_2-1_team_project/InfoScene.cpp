@@ -12,7 +12,3 @@ void InfoScene::Render()
 {
 }
 
-Scene* InfoScene::GetScene() const
-{
-	return _nextScene;
-}

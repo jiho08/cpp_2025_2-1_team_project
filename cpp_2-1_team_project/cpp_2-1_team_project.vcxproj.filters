@@ -52,7 +52,6 @@
       <Filter>Engine\03. Scene</Filter>
     </ClCompile>
     <ClCompile Include="KeyController.cpp" />
-    <ClCompile Include="InfoScene.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="MoveCommand.cpp" />
@@ -60,6 +59,9 @@
     <ClCompile Include="IMovable.cpp" />
     <ClCompile Include="Player.cpp">
       <Filter>Engine\05. Module</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoScene.cpp">
+      <Filter>Engine\03. Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -86,7 +88,6 @@
     <ClInclude Include="Structs.h">
       <Filter>Engine\00. Headers</Filter>
     </ClInclude>
-    <ClInclude Include="InfoScene.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="ICommand.h" />
     <ClInclude Include="MoveCommand.h" />
@@ -94,6 +95,9 @@
     <ClInclude Include="IMovable.h" />
     <ClInclude Include="Enums.h">
       <Filter>Engine\00. Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoScene.h">
+      <Filter>Engine\03. Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

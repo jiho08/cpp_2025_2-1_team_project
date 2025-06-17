@@ -22,6 +22,6 @@ ICommand* InputHandler::HandleInput()
 			return new MoveCommand(key.dir);
 	}
 
-	Sleep(30);
+	Sleep(60);
 	return nullptr;
 }

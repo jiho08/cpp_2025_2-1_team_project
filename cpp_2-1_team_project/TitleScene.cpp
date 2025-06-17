@@ -38,10 +38,7 @@ void TitleScene::Render()
 	
 }
 
-Scene* TitleScene::GetScene() const
-{
-	return _nextScene;
-}
+
 
 void TitleScene::SelectMenu()
 {
@@ -92,15 +89,15 @@ void TitleScene::StartCurrentMenu()
 	switch (_currentMenu)
 	{
 	case MENU::Start:
-		_nextScene = new GameScene();
-		/*SceneManager::GetInstance()->ChangeScene(newScene);*/
+		newScene = new GameScene();
+		SceneManager::GetInstance()->ChangeScene(newScene);
 		
 
 		break;
 	case MENU::Info:
-		_nextScene = new InfoScene();
+		newScene = new InfoScene();
 
-		//SceneManager::GetInstance()->ChangeScene(newScene);
+		SceneManager::GetInstance()->ChangeScene(newScene);
 		break;
 	case MENU::Quit:
 		

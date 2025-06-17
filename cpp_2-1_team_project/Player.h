@@ -6,13 +6,13 @@
 class Player : public Object, public IMovable
 {
 	Position _position;
-	wchar_t _playerSymbol = L'¢Ã';
+	string _playerSymbol = "¢Ã";
 
 public:
 	Player(Position startPos = {0, 0});
 
 	Position GetPos() const;
-	wchar_t GetSymbol() const;
+	string GetSymbol() const;
 
 public:
 	void Update() override;
