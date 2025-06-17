@@ -68,7 +68,6 @@
       <Filter>Engine\00. Headers</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.h" />
-    <ClInclude Include="Enums.h" />
     <ClInclude Include="TitleScene.h">
       <Filter>Engine\03. Scene</Filter>
     </ClInclude>
@@ -79,7 +78,7 @@
     <ClInclude Include="GameScene.h">
       <Filter>Engine\03. Scene</Filter>
     </ClInclude>
-    <ClInclude Include="IScene.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="KeyController.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Structs.h">
@@ -91,5 +90,8 @@
     <ClInclude Include="MoveCommand.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="IMovable.h" />
+    <ClInclude Include="Enums.h">
+      <Filter>Engine\00. Headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

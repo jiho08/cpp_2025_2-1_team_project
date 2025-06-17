@@ -138,7 +138,7 @@
     <ClInclude Include="IMovable.h" />
     <ClInclude Include="InfoScene.h" />
     <ClInclude Include="InputHandler.h" />
-    <ClInclude Include="IScene.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="KeyController.h" />
     <ClInclude Include="MoveCommand.h" />
     <ClInclude Include="Object.h" />

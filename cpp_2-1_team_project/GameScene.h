@@ -6,14 +6,14 @@
 #include "Console.h"
 #include "defines.h"
 #include "Enums.h"
-#include "IScene.h"
+#include "Scene.h"
 #include "Player.h"
 using std::cout;
 using std::endl;
 using std::vector;
 
 
-class GameScene : public IScene
+class GameScene : public Scene
 {
 public:
 	GameScene();

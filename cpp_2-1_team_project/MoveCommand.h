@@ -5,9 +5,9 @@
 class MoveCommand : public ICommand
 {
 public:
-	MoveCommand(Dir dir);
+	MoveCommand(DIR dir);
 	void Execute(Object* actor) override;
 
 private:
-	Dir _dir;
+	DIR _dir;
 };

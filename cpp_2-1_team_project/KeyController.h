@@ -3,4 +3,4 @@
 #include<Windows.h>
 #include<iostream>
 
-Key KeyController();
+KEY KeyController();

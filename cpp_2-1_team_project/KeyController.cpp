@@ -1,37 +1,37 @@
 #include "KeyController.h"
 
-Key KeyController()
+KEY KeyController()
 {
 	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
 	{
 		Sleep(60);
-		return Key::SPACE;
+		return KEY::SPACE;
 	}
 
 	if (GetAsyncKeyState('W') & 0x8000)
 	{
 		Sleep(60);
-		return Key::W;
+		return KEY::W;
 	}
 
 	if (GetAsyncKeyState('A') & 0x8000)
 	{
 		Sleep(60);
-		return Key::A;
+		return KEY::A;
 	}
 
 	if (GetAsyncKeyState('S') & 0x8000)
 	{
 		Sleep(60);
-		return Key::S;
+		return KEY::S;
 	}
 
 	if (GetAsyncKeyState('D') & 0x8000)
 	{
 		Sleep(60);
-		return Key::D;
+		return KEY::D;
 	}
 
 
-	return Key::Fail;
+	return KEY::Fail;
 }

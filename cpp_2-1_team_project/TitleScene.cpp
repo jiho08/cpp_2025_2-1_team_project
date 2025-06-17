@@ -43,15 +43,15 @@ void TitleScene::Render()
 
 void TitleScene::SelectMenu()
 {
-	Key input = KeyController();
+	KEY input = KeyController();
 
 
 	switch (input)
 	{
-	case Key::W:
-		if (_currentMenu != Menu::Start) 
+	case KEY::W:
+		if (_currentMenu != MENU::Start) 
 		{
-			_currentMenu = (Menu)((int)_currentMenu - 1);
+			_currentMenu = (MENU)((int)_currentMenu - 1);
 
 			Gotoxy(menuBtnX - 2, menuBtnY + (int)_currentMenu + 1);
 			cout << " ";
@@ -60,10 +60,10 @@ void TitleScene::SelectMenu()
 		}
 		break;
 
-	case Key::S:
-		if (_currentMenu != Menu::Quit)
+	case KEY::S:
+		if (_currentMenu != MENU::Quit)
 		{
-			_currentMenu = (Menu)((int)_currentMenu + 1);
+			_currentMenu = (MENU)((int)_currentMenu + 1);
 
 			Gotoxy(menuBtnX - 2, menuBtnY + (int)_currentMenu - 1);
 			cout << " ";
@@ -72,7 +72,7 @@ void TitleScene::SelectMenu()
 		}
 		break;
 
-	case Key::SPACE:
+	case KEY::SPACE:
 
 		StartCurrentMenu();
 		break;
@@ -85,19 +85,19 @@ void TitleScene::SelectMenu()
 
 void TitleScene::StartCurrentMenu()
 {
-	IScene* newScene = nullptr;
+	Scene* newScene = nullptr;
 	
 	switch (_currentMenu)
 	{
-	case Menu::Start:
+	case MENU::Start:
 		newScene = new GameScene();
 		SceneManager::GetInstance()->ChangeScene(newScene);
 		break;
-	case Menu::Info:
+	case MENU::Info:
 		newScene = new InfoScene();
 		SceneManager::GetInstance()->ChangeScene(newScene);
 		break;
-	case Menu::Quit:
+	case MENU::Quit:
 		
 		break;
 	}

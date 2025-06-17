@@ -5,5 +5,5 @@ class IMovable
 {
 public:
 	virtual ~IMovable() = default;
-	virtual void Move(Dir dir) abstract;
+	virtual void Move(DIR dir) abstract;
 };

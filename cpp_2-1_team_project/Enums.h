@@ -1,6 +1,6 @@
 #pragma once
 
-enum Scene 
+enum SCENE 
 {
 	Title,
 	Game,
@@ -9,7 +9,7 @@ enum Scene
 	End
 };
 
-enum class Menu
+enum class MENU
 {
 	Start,
 	Info,
@@ -18,7 +18,7 @@ enum class Menu
 	End
 };
 
-enum class Key
+enum class KEY
 {
 	W,
 	A,
@@ -29,7 +29,7 @@ enum class Key
 	End
 };
 
-enum class Tile
+enum class TILE
 {
 	// ±âº»
 	Road = '0', // "±æ"
@@ -49,7 +49,7 @@ enum class COLOR
 	LIGHT_YELLOW, WHITE, END
 };
 
-enum class Dir
+enum class DIR
 {
 	UP, DOWN, LEFT, RIGHT
 };

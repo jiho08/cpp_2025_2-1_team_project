@@ -1,9 +1,9 @@
 #pragma once
 
-class IScene
+class Scene
 {
 public:
-	virtual ~IScene() {}
+	virtual ~Scene() {}
 	virtual void Init() abstract;
 	virtual void Update() abstract;
 	virtual void Render() abstract;

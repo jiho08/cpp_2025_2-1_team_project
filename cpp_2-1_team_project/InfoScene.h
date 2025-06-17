@@ -1,6 +1,6 @@
 #pragma once
-#include "IScene.h"
-class InfoScene : public IScene
+#include "Scene.h"
+class InfoScene : public Scene
 {
 public:
 	InfoScene() {};
