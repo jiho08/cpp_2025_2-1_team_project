@@ -17,6 +17,7 @@ class GameScene : public Scene
 {
 public:
 	GameScene();
+	~GameScene();
 	int stage = 1;
 	void Init() override;
 	void Update() override;
@@ -26,6 +27,7 @@ public:
 	vector<vector<char>> _map;
 	Position startPos;
 	Player* _player;
+	KEY input;
 	void SetMap();
 	//void GameClear();
 	void Restart();

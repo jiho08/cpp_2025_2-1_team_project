@@ -88,16 +88,19 @@ void TitleScene::StartCurrentMenu()
 	{
 	case MENU::Start:
 		newScene = new GameScene();
-		SceneManager::GetInstance()->ChangeScene(newScene);
+		/*SceneManager::GetInstance()->ChangeScene(newScene);*/
+		
+
 		break;
 	case MENU::Info:
 		newScene = new InfoScene();
-		SceneManager::GetInstance()->ChangeScene(newScene);
+		//SceneManager::GetInstance()->ChangeScene(newScene);
 		break;
 	case MENU::Quit:
 		
 		break;
 	}
+	return newScene;
 }
 
 

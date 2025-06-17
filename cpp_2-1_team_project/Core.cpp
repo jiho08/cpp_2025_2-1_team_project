@@ -46,16 +46,17 @@ void Core::Init()
 
 void Core::Update()
 {
-	ICommand* cmd = _inputHandler->HandleInput();
+	//ICommand* cmd = _inputHandler->HandleInput();
 
-	if (cmd)
-	{
-		cmd->Execute(_player);
-		delete cmd; // 호출한 core가 delete를 해야 누수가 안남
-	}
+	//if (cmd)
+	//{
+	//	cmd->Execute(_player);
+	//	delete cmd; // 호출한 core가 delete를 해야 누수가 안남
+	//}
 
 	_currentScene->Update();
 	_player->Update();
+
 }
 
 void Core::Render()
