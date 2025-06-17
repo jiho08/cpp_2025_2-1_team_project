@@ -4,22 +4,26 @@
 #include "ICommand.h"
 #include "InputHandler.h"
 #include "Player.h"
+#include "TitleScene.h"
 
 Core::Core()
 	: _isRunning(true)
 	, _player(nullptr)
 	, _inputHandler(nullptr)
 	, _resolution{}
+	,_currentScene(nullptr)
 {
 	_resolution = GetConsoleResolution();
 	_inputHandler = new InputHandler;
 	_player = new Player({ _resolution.x / 2, _resolution.y / 2 });
+	_currentScene = new TitleScene;
 }
 
 Core::~Core()
 {
 	SAFE_DELETE(_player)
-	SAFE_DELETE(_inputHandler)
+		SAFE_DELETE(_inputHandler)
+		SAFE_DELETE(_currentScene);
 }
 
 void Core::Run()
@@ -50,12 +54,13 @@ void Core::Update()
 		delete cmd; // 호출한 core가 delete를 해야 누수가 안남
 	}
 
+	_currentScene->Update();
 	_player->Update();
-
 }
 
 void Core::Render()
 {
+	_currentScene->Render();
 	_player->Render();
 }
 
