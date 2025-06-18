@@ -1,5 +1,12 @@
 #include "GameScene.h"
-
+#include "KeyController.h"
+#include "SceneManager.h"
+#include "TitleScene.h"
+#include <filesystem>
+#include "Console.h"
+#include "defines.h"
+#include <string>
+#include <fstream>
 
 GameScene::GameScene()
 {
@@ -9,6 +16,7 @@ GameScene::GameScene()
 	SetMap();
 	
 	_player = new Player(startPos);
+	_player->SetMap(&_map);
 }
 
 GameScene::~GameScene()
@@ -18,8 +26,7 @@ GameScene::~GameScene()
 
 void GameScene::Init()
 {
-	
-	
+
 }
 
 void GameScene::Update()

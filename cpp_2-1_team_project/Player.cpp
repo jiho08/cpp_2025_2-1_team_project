@@ -4,7 +4,7 @@
 #include "defines.h"
 #include "KeyController.h"
 
-Player::Player(Position pos) : Object(pos)
+Player::Player(const Position pos) : Object(pos), _currentColor(COLOR::WHITE),_map(nullptr)
 {
 }
 
@@ -18,16 +18,19 @@ COLOR Player::GetColor() const
 	return _currentColor;
 }
 
-void Player::SetColor(COLOR newColor)
+void Player::SetColor(const COLOR newColor)
 {
 	_currentColor = newColor;
 }
 
+void Player::SetMap(const vector<vector<char>>* map)
+{
+	_map = map;
+}
+
 void Player::Update()
 {
-	KEY input = KeyController();
-
-	switch (input)
+	switch (KEY input = KeyController())
 	{
 	case KEY::W:
 		Move(DIR::UP);
@@ -53,7 +56,7 @@ void Player::Render() const
 	cout << GetSymbol();
 }
 
-void Player::Move(DIR dir)
+void Player::Move(const DIR dir)
 {
 	Position newPos = _pos;
 
@@ -76,10 +79,16 @@ void Player::Move(DIR dir)
 		break;
 	}
 
-	_pos.x = std::clamp(newPos.x, 0, MAP_WIDTH - 1);
-	_pos.y = std::clamp(newPos.y, 0, MAP_HEIGHT - 1);
+	if (newPos.x < 0 || newPos.x >= MAP_WIDTH || newPos.y < 0 || newPos.y >= MAP_HEIGHT)
+		return;
+
+	if ((*_map)[newPos.y][newPos.x] != static_cast<char>(TILE::Road))
+		return;
+
+	_pos = newPos;
 }
 
-void Player::SetPosition(Position newPos)
+void Player::SetPosition(const Position newPos)
 {
+	_pos = newPos;
 }
