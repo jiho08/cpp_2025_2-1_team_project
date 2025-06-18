@@ -22,5 +22,4 @@ private:
 	MENU _currentMenu;
 	void SelectMenu();
 	void StartCurrentMenu();
-
 };

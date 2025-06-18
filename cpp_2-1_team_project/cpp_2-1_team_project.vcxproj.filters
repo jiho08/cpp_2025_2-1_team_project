@@ -79,6 +79,9 @@
     <ClCompile Include="Singleton.cpp">
       <Filter>Engine\05. Module</Filter>
     </ClCompile>
+    <ClCompile Include="StageSelectScene.cpp">
+      <Filter>Engine\03. Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -134,6 +137,9 @@
     </ClInclude>
     <ClInclude Include="Singleton.h">
       <Filter>Engine\05. Module</Filter>
+    </ClInclude>
+    <ClInclude Include="StageSelectScene.h">
+      <Filter>Engine\03. Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
