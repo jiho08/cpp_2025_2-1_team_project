@@ -9,12 +9,14 @@ using std::string;
 class Player : public Object, public IMovable
 {
 	string _playerSymbol = "¢Ã";
+	COLOR _currentColor;
 
 public:
 	Player(Position startPos = { 0, 0 });
 
-	Position GetPos() const;
 	string GetSymbol() const;
+	COLOR GetColor() const;
+	void SetColor(COLOR newColor);
 	void Update() override;
 	void Render() const override;
 	void Move(DIR dir) override;
