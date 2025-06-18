@@ -25,6 +25,7 @@ enum class KEY
 	S,
 	D,
 	SPACE,
+	ESC,
 	Fail,
 	End
 };

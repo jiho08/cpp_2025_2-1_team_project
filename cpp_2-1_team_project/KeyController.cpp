@@ -8,6 +8,13 @@ KEY KeyController()
 		return KEY::SPACE;
 	}
 
+	if (GetAsyncKeyState(VK_ESCAPE) & 0x8000)
+	{
+		Sleep(60);
+		return KEY::ESC;
+	}
+
+
 	if (GetAsyncKeyState('W') & 0x8000)
 	{
 		Sleep(60);

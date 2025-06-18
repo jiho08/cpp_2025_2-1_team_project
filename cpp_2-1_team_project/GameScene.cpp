@@ -1,12 +1,13 @@
 #include "GameScene.h"
 
+
 GameScene::GameScene()
 {
 	system("cls");
 	_map = vector(MAP_HEIGHT, vector<char>(MAP_WIDTH));
 
 	SetMap();
-
+	
 	_player = new Player(startPos);
 }
 
@@ -17,23 +18,33 @@ GameScene::~GameScene()
 
 void GameScene::Init()
 {
+	
+	
 }
 
 void GameScene::Update()
 {
 	_player->Update();
+	input = KeyController();
+	if (input == KEY::ESC)
+	{
+		SceneManager::GetInstance()->ChangeScene(new TitleScene());
+		return;
+	}
 }
 
 void GameScene::Render()
 {
-	Gotoxy(0, 0);
+	Gotoxy(42, 8);
+	cout << "Stage: " << stage << endl;
 
-	for (int i = 0; i < MAP_HEIGHT; ++i)
+	Gotoxy(40, 15);
+	for (int i = 0; i < MAP_HEIGHT; i++)
 	{
-		for (int j = 0; j < MAP_WIDTH; ++j)
+		for (int j = 0; j < MAP_WIDTH; j++)
 		{
+			
 			Position currentPos = { j, i };
-
 			if (_player->GetPos() == currentPos)
 			{
 				_map[i][j] = '2';
@@ -42,7 +53,6 @@ void GameScene::Render()
 			else 
 			{
 				Position currentPos = Position(i, j);
-
 				if (_map[i][j] == (char)TILE::Wall)
 				{
 					SetColor(COLOR::WHITE, COLOR::WHITE);
@@ -64,15 +74,11 @@ void GameScene::Render()
 					SetColor();
 				}
 			}
-
-			
-			
-			
 		}
 		cout << endl;
+		Gotoxy(40, 15 + i + 1);
 	}
-	Gotoxy(0, 7);
-	cout << "Stage: " << stage << endl;
+	
 	
 }
 
@@ -98,7 +104,6 @@ void GameScene::SetMap()
 	else
 	{
 		cout << "맵 파일을 열 수 없습니다.";
-
 	}
 }
 
@@ -107,6 +112,24 @@ void GameScene::Restart()
 	delete _player;
 	_player = nullptr;
 	Init();
+
+
+}
+
+void GameScene::Exit()
+{
+	
+
+	std::ofstream outFile("highStage.txt");
+	if (outFile.is_open())
+	{
+		outFile << stage;
+		outFile.close();
+	}
+	else
+	{
+		cout << "파일을 열 수 없습니다." << endl;
+	}
 }
 
 

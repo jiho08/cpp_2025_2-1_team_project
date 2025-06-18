@@ -8,6 +8,21 @@ using std::cout;
 
 void TitleScene::Init()
 {
+	std::ifstream mapFile("highStage.txt");
+	if (mapFile.good())
+	{
+		if (mapFile.is_open())
+		{
+			mapFile >> highStage;
+			mapFile.close();
+
+		}
+		else
+		{
+			cout << "highStage.txt 파일을 열 수 없습니다." << endl;
+		}
+
+	}
 }
 
 void TitleScene::Update()
@@ -17,23 +32,29 @@ void TitleScene::Update()
 
 void TitleScene::Render()
 {
-	
-
-	Gotoxy(0, 0);
+	Position consoleSize = GetConsoleResolution();
+	int resX = consoleSize.x / 2;
+	int resY = consoleSize.y / 2;
+	Gotoxy(resX-38, 5);
 	int coutmode = _setmode(_fileno(stdout), _O_U16TEXT);
 	wcout << L"██████╗ ██╗      ██████╗  ██████╗██╗  ██╗        ███████╗██╗██╗     ██╗" << endl;
+	Gotoxy(resX - 38, 6);
 	wcout << L"██╔══██╗██║     ██╔═══██╗██╔════╝██║ ██╔╝        ██╔════╝██║██║     ██║" << endl;
+	Gotoxy(resX - 38, 7);
 	wcout << L"██████╔╝██║     ██║   ██║██║     █████╔╝         █████╗  ██║██║     ██║" << endl;
+	Gotoxy(resX - 38, 8);
 	wcout << L"██╔══██╗██║     ██║   ██║██║     ██╔═██╗         ██╔══╝  ██║██║     ██║" << endl;
+	Gotoxy(resX - 38, 9);
 	wcout << L"██████╔╝███████╗╚██████╔╝╚██████╗██║  ██╗        ██║     ██║███████╗███████╗" << endl;
+	Gotoxy(resX - 38, 10);
 	wcout << L"╚═════╝ ╚══════╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝        ╚═╝     ╚═╝╚══════╝╚══════╝" << endl;
 	int wcoutmode = _setmode(_fileno(stdout), coutmode);
 
-	Gotoxy(menuBtnX, menuBtnY);
+	Gotoxy(resX - menuBtnX, menuBtnY);
 	cout << "Game";
-	Gotoxy(menuBtnX, menuBtnY+1);
+	Gotoxy(resX - menuBtnX, menuBtnY+1);
 	cout << "Info";
-	Gotoxy(menuBtnX, menuBtnY+2);
+	Gotoxy(resX - menuBtnX, menuBtnY+2);
 	cout << "Exit";
 	
 }
@@ -44,7 +65,9 @@ void TitleScene::SelectMenu()
 {
 	KEY input = KeyController();
 
-
+	Position consoleSize = GetConsoleResolution();
+	int resX = consoleSize.x / 2;
+	int resY = consoleSize.y / 2;
 	switch (input)
 	{
 	case KEY::W:
@@ -52,9 +75,9 @@ void TitleScene::SelectMenu()
 		{
 			_currentMenu = (MENU)((int)_currentMenu - 1);
 
-			Gotoxy(menuBtnX - 2, menuBtnY + (int)_currentMenu + 1);
+			Gotoxy(resX - menuBtnX - 2,menuBtnY + (int)_currentMenu + 1);
 			cout << " ";
-			Gotoxy(menuBtnX - 2, menuBtnY + (int)_currentMenu);
+			Gotoxy(resX - menuBtnX - 2, menuBtnY + (int)_currentMenu);
 			cout << ">";
 		}
 		break;
@@ -64,9 +87,9 @@ void TitleScene::SelectMenu()
 		{
 			_currentMenu = (MENU)((int)_currentMenu + 1);
 
-			Gotoxy(menuBtnX - 2, menuBtnY + (int)_currentMenu - 1);
+			Gotoxy(resX - menuBtnX -2, menuBtnY + (int)_currentMenu - 1);
 			cout << " ";
-			Gotoxy(menuBtnX - 2, menuBtnY + (int)_currentMenu);
+			Gotoxy(resX - menuBtnX -2, menuBtnY + (int)_currentMenu);
 			cout << ">";
 		}
 		break;
