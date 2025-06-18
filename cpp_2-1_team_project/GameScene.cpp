@@ -17,8 +17,6 @@ GameScene::~GameScene()
 
 void GameScene::Init()
 {
-	
-	
 }
 
 void GameScene::Update()
@@ -29,11 +27,13 @@ void GameScene::Update()
 void GameScene::Render()
 {
 	Gotoxy(0, 0);
-	for (int i = 0; i < MAP_HEIGHT; i++)
+
+	for (int i = 0; i < MAP_HEIGHT; ++i)
 	{
-		for (int j = 0; j < MAP_WIDTH; j++)
+		for (int j = 0; j < MAP_WIDTH; ++j)
 		{
 			Position currentPos = { j, i };
+
 			if (_player->GetPos() == currentPos)
 			{
 				_map[i][j] = '2';
@@ -42,6 +42,7 @@ void GameScene::Render()
 			else 
 			{
 				Position currentPos = Position(i, j);
+
 				if (_map[i][j] == (char)TILE::Wall)
 				{
 					SetColor(COLOR::WHITE, COLOR::WHITE);
