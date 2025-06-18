@@ -8,17 +8,20 @@ Player::Player(Position pos) : Object(pos)
 {
 }
 
-Position Player::GetPos() const
-{
-	return _pos;
-}
-
-
 string Player::GetSymbol() const
 {
 	return _playerSymbol;
 }
 
+COLOR Player::GetColor() const
+{
+	return _currentColor;
+}
+
+void Player::SetColor(COLOR newColor)
+{
+	_currentColor = newColor;
+}
 
 void Player::Update()
 {
