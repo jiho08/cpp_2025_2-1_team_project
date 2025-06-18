@@ -19,9 +19,7 @@ public:
 private:
 	int menuBtnX = 2;
 	int menuBtnY = 20;
-	int highStage = 1;
 	MENU _currentMenu;
 	void SelectMenu();
 	void StartCurrentMenu();
-
 };
