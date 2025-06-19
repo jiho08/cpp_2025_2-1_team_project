@@ -8,16 +8,19 @@
 #include <string>
 #include <fstream>
 
-GameScene::GameScene()
+GameScene::GameScene(int _selectStage)
 {
 	system("cls");
 	_map = vector(MAP_HEIGHT, vector<char>(MAP_WIDTH));
+	stage = _selectStage;
 
 	SetMap();
 	
 	_player = new Player(startPos);
 	_player->SetMap(&_map);
+
 }
+
 
 GameScene::~GameScene()
 {
@@ -26,7 +29,7 @@ GameScene::~GameScene()
 
 void GameScene::Init()
 {
-
+	
 }
 
 void GameScene::Update()
