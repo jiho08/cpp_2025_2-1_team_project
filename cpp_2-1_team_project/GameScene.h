@@ -15,19 +15,21 @@ public:
 	GameScene();
 	~GameScene() override;
 
-	int stage = 1;
 	void Init() override;
 	void Update() override;
 	void Render() override;
-	vector<vector<char>> GetMap();
 
-	vector<vector<char>> _map;
-	Position startPos;
-	Player* _player;
-	KEY input;
 	void SetMap();
 	//void GameClear();
 	void Restart();
 	void Exit();
-};
 
+	vector<vector<char>> GetMap();
+
+private:
+	vector<vector<char>> _map;
+	Position _startPos;
+	Player* _player;
+	KEY _input;
+	int _stage;
+};

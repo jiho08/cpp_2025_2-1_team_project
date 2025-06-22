@@ -4,11 +4,9 @@
 using std::wcout;
 using std::cout;
 
-
-
 void TitleScene::Init()
 {
-	
+	system("cls");
 }
 
 void TitleScene::Update()
@@ -21,7 +19,7 @@ void TitleScene::Render()
 	Position consoleSize = GetConsoleResolution();
 	int resX = consoleSize.x / 2;
 	int resY = consoleSize.y / 2;
-	Gotoxy(resX-38, 5);
+	Gotoxy(resX - 38, 5);
 	int coutmode = _setmode(_fileno(stdout), _O_U16TEXT);
 	wcout << L"██████╗ ██╗      ██████╗  ██████╗██╗  ██╗        ███████╗██╗██╗     ██╗" << endl;
 	Gotoxy(resX - 38, 6);
@@ -38,14 +36,12 @@ void TitleScene::Render()
 
 	Gotoxy(resX - menuBtnX, menuBtnY);
 	cout << "Game";
-	Gotoxy(resX - menuBtnX, menuBtnY+1);
+	Gotoxy(resX - menuBtnX, menuBtnY + 1);
 	cout << "Info";
-	Gotoxy(resX - menuBtnX, menuBtnY+2);
+	Gotoxy(resX - menuBtnX, menuBtnY + 2);
 	cout << "Exit";
-	
+
 }
-
-
 
 void TitleScene::SelectMenu()
 {
@@ -54,14 +50,15 @@ void TitleScene::SelectMenu()
 	Position consoleSize = GetConsoleResolution();
 	int resX = consoleSize.x / 2;
 	int resY = consoleSize.y / 2;
+
 	switch (input)
 	{
 	case KEY::W:
-		if (_currentMenu != MENU::Start) 
+		if (_currentMenu != MENU::Start)
 		{
 			_currentMenu = (MENU)((int)_currentMenu - 1);
 
-			Gotoxy(resX - menuBtnX - 2,menuBtnY + (int)_currentMenu + 1);
+			Gotoxy(resX - menuBtnX - 2, menuBtnY + (int)_currentMenu + 1);
 			cout << " ";
 			Gotoxy(resX - menuBtnX - 2, menuBtnY + (int)_currentMenu);
 			cout << ">";
@@ -73,43 +70,36 @@ void TitleScene::SelectMenu()
 		{
 			_currentMenu = (MENU)((int)_currentMenu + 1);
 
-			Gotoxy(resX - menuBtnX -2, menuBtnY + (int)_currentMenu - 1);
+			Gotoxy(resX - menuBtnX - 2, menuBtnY + (int)_currentMenu - 1);
 			cout << " ";
-			Gotoxy(resX - menuBtnX -2, menuBtnY + (int)_currentMenu);
+			Gotoxy(resX - menuBtnX - 2, menuBtnY + (int)_currentMenu);
 			cout << ">";
 		}
 		break;
 
 	case KEY::SPACE:
-
 		StartCurrentMenu();
 		break;
-
-	default:
-		break;
 	}
-
 }
 
 void TitleScene::StartCurrentMenu()
 {
 	Scene* newScene = nullptr;
-	
+
 	switch (_currentMenu)
 	{
 	case MENU::Start:
 		newScene = new GameScene();
 		SceneManager::GetInstance()->ChangeScene(newScene);
-		
-
 		break;
+
 	case MENU::Info:
 		newScene = new InfoScene();
-
 		SceneManager::GetInstance()->ChangeScene(newScene);
 		break;
+
 	case MENU::Quit:
-		
 		break;
 	}
 }
