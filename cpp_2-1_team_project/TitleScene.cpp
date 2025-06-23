@@ -8,7 +8,7 @@ using std::cout;
 
 void TitleScene::Init()
 {
-	
+	system("cls");
 }
 
 void TitleScene::Update()
@@ -98,15 +98,16 @@ void TitleScene::StartCurrentMenu()
 	switch (_currentMenu)
 	{
 	case MENU::Start:
-		newScene = new GameScene();
+		newScene = new StageSelectScene();
 		SceneManager::GetInstance()->ChangeScene(newScene);
-		
+		delete this; // TitleScene는 더 이상 필요하지 않으므로 삭제
 
 		break;
 	case MENU::Info:
 		newScene = new InfoScene();
-
 		SceneManager::GetInstance()->ChangeScene(newScene);
+		delete this;
+		
 		break;
 	case MENU::Quit:
 		

@@ -4,6 +4,7 @@
 #include "SceneManager.h"
 #include "GameScene.h"
 #include "InfoScene.h"
+#include "StageSelectScene.h"
 #include<iostream>
 #include<fstream>
 #include<io.h>

@@ -14,10 +14,7 @@ GameScene::GameScene(int _selectStage)
 	_map = vector(MAP_HEIGHT, vector<char>(MAP_WIDTH));
 	stage = _selectStage;
 
-	SetMap();
 	
-	_player = new Player(startPos);
-	_player->SetMap(&_map);
 
 }
 
@@ -29,6 +26,11 @@ GameScene::~GameScene()
 
 void GameScene::Init()
 {
+	SetMap();
+	Render();
+
+	_player = new Player(startPos);
+	_player->SetMap(&_map);
 	
 }
 
@@ -41,10 +43,17 @@ void GameScene::Update()
 		SceneManager::GetInstance()->ChangeScene(new TitleScene());
 		return;
 	}
+	else if (input == KEY::R)
+	{
+		Restart();
+		return;
+	}
+	
 }
 
 void GameScene::Render()
 {
+	
 	Gotoxy(42, 8);
 	cout << "Stage: " << stage << endl;
 
@@ -55,7 +64,7 @@ void GameScene::Render()
 		{
 			
 			Position currentPos = { j, i };
-			if (_player->GetPos() == currentPos)
+			if (_player != nullptr && _player->GetPos() == currentPos)
 			{
 				_map[i][j] = '2';
 				cout << _player->GetSymbol();
@@ -73,7 +82,7 @@ void GameScene::Render()
 					cout << "□";
 				else if (_map[i][j] == (char)TILE::Start)
 				{
-					startPos = { i, j };
+					startPos = { j, i };
 					_map[i][j] = '0';
 					cout << "□";
 				}
@@ -140,6 +149,8 @@ void GameScene::Exit()
 	{
 		cout << "파일을 열 수 없습니다." << endl;
 	}
+	SceneManager::GetInstance()->ChangeScene(new StageSelectScene());
+	delete this;
 }
 
 

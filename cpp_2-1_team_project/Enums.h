@@ -24,6 +24,7 @@ enum class KEY
 	A,
 	S,
 	D,
+	R,
 	SPACE,
 	ESC,
 	Fail,
