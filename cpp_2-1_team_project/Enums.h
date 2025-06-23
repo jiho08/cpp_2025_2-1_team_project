@@ -24,6 +24,7 @@ enum class KEY
 	A,
 	S,
 	D,
+	R,
 	SPACE,
 	ESC,
 	Fail,
@@ -37,8 +38,11 @@ enum class TILE
 	Start = '1', // 스테이지 시작 시 플레이어 시작점
 	Imprint, // 플레이어가 지나간 길 표시
 
-	// 기믹
+	// 벽 & 색깔
 	Wall, // 플레이어가 통과 할 수 없는 벽
+	Red = '4',
+	Green,
+	Blue,
 	End
 };
 

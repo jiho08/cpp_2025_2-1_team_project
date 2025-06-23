@@ -12,7 +12,7 @@ using std::vector;
 class GameScene : public Scene
 {
 public:
-	GameScene();
+	GameScene(int _selectStage);
 	~GameScene() override;
 
 	void Init() override;
@@ -28,8 +28,10 @@ public:
 
 private:
 	vector<vector<char>> _map;
+	vector<vector<char>> _completeMap;
 	Position _startPos;
 	Player* _player;
 	KEY _input;
 	int _stage;
+	void RenderCompleteMap();
 };

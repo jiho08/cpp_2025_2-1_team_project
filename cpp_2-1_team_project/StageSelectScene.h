@@ -6,6 +6,7 @@
 #include "KeyController.h"
 #include "SceneManager.h"
 #include "GameScene.h"
+#include "TitleScene.h"
 
 #include<iostream>
 #include<fstream>
@@ -29,6 +30,6 @@ private:
 	vector<vector<char>> _map;
 
 	void SetMap();
-
+	void Exit();
 };
 
