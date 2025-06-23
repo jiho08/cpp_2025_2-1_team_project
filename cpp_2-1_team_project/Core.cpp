@@ -1,7 +1,6 @@
 #include "Core.h"
 #include "Console.h"
 #include "defines.h"
-#include "ICommand.h"
 #include "InputHandler.h"
 #include "Player.h"
 #include "TitleScene.h"
@@ -17,7 +16,7 @@ Core::Core()
 
 Core::~Core()
 {
-		SAFE_DELETE(_inputHandler)
+	SAFE_DELETE(_inputHandler)
 }
 
 void Core::Run()
@@ -52,15 +51,12 @@ void Core::Update()
 
 	SceneManager::GetInstance()->Update();
 
-	;
-
 	/*Scene* newScene = _currentScene->GetScene();
 
 	if (newScene)
 	{
 		_currentScene = newScene;
 	}*/
-
 }
 
 void Core::Render()
