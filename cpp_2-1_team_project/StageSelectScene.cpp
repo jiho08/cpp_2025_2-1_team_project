@@ -16,13 +16,13 @@ void StageSelectScene::Init()
 		}
 		else
 		{
-			_highStage = 5;
+			_highStage = 29;
 		}
 
 	}
 	else
 	{
-		_highStage = 5;
+		_highStage = 29;
 	}
 	
 	SetMap();
@@ -71,17 +71,22 @@ void StageSelectScene::Render()
 	SetColor(COLOR::LIGHT_BLUE);
 	cout << " Sta";
 
-	Gotoxy(51, 4);
+	Gotoxy(52, 4);
 	SetColor(COLOR::LIGHT_YELLOW);
 	cout << "ge";
 	SetColor();
 
 	Gotoxy(44, 10);
-	cout << "Stage: " << _currentStage << endl;
+	if(_currentStage < 10)
+		cout << "Stage: 0" << _currentStage << endl;
+	else
+		cout << "Stage: " << _currentStage << endl;
 
 	Gotoxy(42, 17);
 	for (int i = 0; i < MAP_HEIGHT; i++)
 	{
+		Gotoxy(42, 15 + i + 1);
+
 		for (int j = 0; j < MAP_WIDTH; j++)
 		{
 			Position currentPos = Position(i, j);
@@ -100,7 +105,6 @@ void StageSelectScene::Render()
 
 		}
 		cout << endl;
-		Gotoxy(42, 15 + i + 1);
 	}
 	if (_currentStage == 1) 
 	{

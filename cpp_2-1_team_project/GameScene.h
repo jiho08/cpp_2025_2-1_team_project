@@ -28,8 +28,10 @@ public:
 
 private:
 	vector<vector<char>> _map;
+	vector<vector<char>> _completeMap;
 	Position _startPos;
 	Player* _player;
 	KEY _input;
 	int _stage;
+	void RenderCompleteMap();
 };

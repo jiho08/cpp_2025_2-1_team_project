@@ -90,13 +90,15 @@ void TitleScene::StartCurrentMenu()
 	switch (_currentMenu)
 	{
 	case MENU::Start:
-		newScene = new GameScene();
+		newScene = new StageSelectScene();
 		SceneManager::GetInstance()->ChangeScene(newScene);
+		delete this;
 		break;
 
 	case MENU::Info:
 		newScene = new InfoScene();
 		SceneManager::GetInstance()->ChangeScene(newScene);
+		delete this;
 		break;
 
 	case MENU::Quit:
