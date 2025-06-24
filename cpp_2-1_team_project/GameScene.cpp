@@ -26,10 +26,11 @@ void GameScene::Init()
 	
 	SetMap();
 	Render();
-	RenderCompleteMap();
+	
 	_player = new Player(_startPos);
 	_player->SetMap(&_map);
-	_player->SetColor(COLOR::LIGHT_YELLOW);
+	_player->SetColor(COLOR::RED);
+	RenderCompleteMap();
 }
 
 void GameScene::Update()
@@ -63,51 +64,64 @@ void GameScene::Render()
 		{
 			Position currentPos = { j, i };
 
+			
+
 			if (_player != nullptr && _player->GetPos() == currentPos)
 			{
-				_map[i][j] = '2';
 				cout << _player->GetSymbol();
+				switch (_player->GetColor())
+				{
+				case COLOR::RED:
+					_map[i][j] = '4';
+					break;
+				case COLOR::GREEN:
+					_map[i][j] = '5';
+					break;
+				case COLOR::BLUE:
+					_map[i][j] = '6';
+					break;
+
+				}
 			}
-			else
-				if (_map[i][j] == static_cast<char>(TILE::Wall))
-				{
-					SetColor(COLOR::WHITE, COLOR::WHITE);
-					cout << "¡á";
-					SetColor();
-				}
-				else if (_map[i][j] == static_cast<char>(TILE::Road))
-					cout << "¡à";
-				else if (_map[i][j] == static_cast<char>(TILE::Start))
-				{
-					_startPos = { j, i };
-					_map[i][j] = '0';
-					cout << "¡à";
-				}
-				else if (_map[i][j] == static_cast<char>(TILE::Imprint))
-				{
-					SetColor(_player->GetColor());
-					cout << "¢Ã";
-					SetColor();
-					switch (_player->GetColor())
-					{
-						case COLOR::RED:
-							_map[i][j] = '4';
-							break;
-						case COLOR::GREEN:
-							_map[i][j] = '5';
-							break;
-						case COLOR::BLUE:
-							_map[i][j] = '6';
-							break;
+			else if (_map[i][j] == static_cast<char>(TILE::Start))
+			{
+				_startPos = { j, i };
+				cout << "¡à";
+			}
+			else if (_map[i][j] == static_cast<char>(TILE::Wall))
+			{
+				SetColor(COLOR::WHITE, COLOR::WHITE);
+				cout << "¡á";
+				SetColor();
+			}
 
-					}
+			else if (_map[i][j] == static_cast<char>(TILE::Road))
+				cout << "¡à";
 
-				}
+			else if (_map[i][j] == static_cast<char>(TILE::Red))
+			{
+				SetColor(COLOR::RED);
+				cout << "¢Ã";
+				SetColor();
+			}
+			else if (_map[i][j] == static_cast<char>(TILE::Green))
+			{
+				SetColor(COLOR::GREEN);
+				cout << "¢Ã";
+				SetColor();
+			}
+			else if (_map[i][j] == static_cast<char>(TILE::Blue))
+			{
+				SetColor(COLOR::BLUE);
+				cout << "¢Ã";
+				SetColor();
+			}
 		}
 
 		cout << '\n';
 		Gotoxy(40, 15 + i + 1);
 	}
+
 }
 
 vector<vector<char>> GameScene::GetMap()
@@ -158,6 +172,28 @@ void GameScene::RenderCompleteMap()
 
 		cout << '\n';
 		Gotoxy(60, 15 + i + 1);
+	}
+	Gotoxy(42, 15 + MAP_HEIGHT + 5);
+	switch (_player->GetColor())
+	{
+	case COLOR::RED:
+		cout << "ÇöÀç »ö±ò: ";
+		SetColor(COLOR::RED);
+		cout << "»¡°­";
+		SetColor();
+		break;
+	case COLOR::GREEN:
+		cout << "ÇöÀç »ö±ò: ";
+		SetColor(COLOR::GREEN);
+		cout << "ÃÊ·Ï";
+		SetColor();
+		break;
+	case COLOR::BLUE:
+		cout << "ÇöÀç »ö±ò: ";
+		SetColor(COLOR::BLUE);
+		cout << "ÆÄ¶û";
+		SetColor();
+		break;
 	}
 }
 
