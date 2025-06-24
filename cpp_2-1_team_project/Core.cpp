@@ -3,6 +3,7 @@
 #include "defines.h"
 #include "InputHandler.h"
 #include "Player.h"
+#include "SceneManager.h"
 #include "TitleScene.h"
 
 Core::Core()

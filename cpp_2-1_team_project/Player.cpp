@@ -1,10 +1,10 @@
 #include "Player.h"
-#include <algorithm>
 #include "Console.h"
 #include "defines.h"
 #include "KeyController.h"
 
-Player::Player(const Position pos) : Object(pos), _currentColor(COLOR::WHITE),_map(nullptr)
+Player::Player(const Position pos) : Object(pos), _currentColorIndex(0),
+_map(nullptr), _colorList({ COLOR::RED, COLOR::GREEN, COLOR::BLUE })
 {
 }
 
@@ -15,12 +15,25 @@ string Player::GetSymbol() const
 
 COLOR Player::GetColor() const
 {
-	return _currentColor;
+	return _colorList[_currentColorIndex];
 }
 
 void Player::SetColor(const COLOR newColor)
 {
-	_currentColor = newColor;
+	switch (newColor)
+	{
+	case COLOR::RED:
+		_currentColorIndex = 0;
+		break;
+
+	case COLOR::GREEN:
+		_currentColorIndex = 1;
+		break;
+
+	case COLOR::BLUE:
+		_currentColorIndex = 2;
+		break;
+	}
 }
 
 void Player::SetMap(const vector<vector<char>>* map)
@@ -46,6 +59,10 @@ void Player::Update()
 
 	case KEY::D:
 		Move(DIR::RIGHT);
+		break;
+
+	case KEY::C:
+		ChangeColor();
 		break;
 	}
 }
@@ -86,6 +103,11 @@ void Player::Move(const DIR dir)
 		return;
 
 	_pos = newPos;
+}
+
+void Player::ChangeColor()
+{
+	SetColor(_colorList[++_currentColorIndex % 3]);
 }
 
 void Player::SetPosition(const Position newPos)
