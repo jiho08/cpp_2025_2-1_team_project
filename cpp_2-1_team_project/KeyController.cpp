@@ -14,7 +14,6 @@ KEY KeyController()
 		return KEY::ESC;
 	}
 
-
 	if (GetAsyncKeyState('W') & 0x8000)
 	{
 		Sleep(60);
