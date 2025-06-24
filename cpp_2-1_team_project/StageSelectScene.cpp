@@ -16,13 +16,13 @@ void StageSelectScene::Init()
 		}
 		else
 		{
-			_highStage = 29;
+			_highStage = 17;
 		}
 
 	}
 	else
 	{
-		_highStage = 29;
+		_highStage = 17; 
 	}
 	
 	SetMap();
@@ -47,11 +47,15 @@ void StageSelectScene::Update()
 			SetMap();
 		}
 		break;
+
 	case KEY::SPACE:
-	{
 		SceneManager::GetInstance()->ChangeScene(new GameScene(_currentStage));
 		break;
-	}
+	
+	case KEY::ESC:
+		Exit();
+		break;
+	
 	}
 }
 
