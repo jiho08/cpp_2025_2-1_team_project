@@ -34,4 +34,5 @@ private:
 	KEY _input;
 	int _stage;
 	void RenderCompleteMap();
+	bool CheckClearStage() const;
 };
