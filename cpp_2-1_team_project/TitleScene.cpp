@@ -1,5 +1,13 @@
-﻿#include "TitleScene.h"
+﻿#include<iostream>
+#include<fstream>
+#include<io.h>
+#include <fcntl.h>
+#include "TitleScene.h"
 #include "Console.h"
+#include "InfoScene.h"
+#include "StageSelectScene.h"
+#include "KeyController.h"
+#include "SceneManager.h"
 
 using std::wcout;
 using std::cout;
@@ -7,6 +15,10 @@ using std::cout;
 void TitleScene::Init()
 {
 	system("cls");
+
+	_consoleSize = GetConsoleResolution();
+	_resX = _consoleSize.x / 2;
+	_resY = _consoleSize.y / 2;
 }
 
 void TitleScene::Update()
@@ -16,51 +28,45 @@ void TitleScene::Update()
 
 void TitleScene::Render()
 {
-	Position consoleSize = GetConsoleResolution();
-	int resX = consoleSize.x / 2;
-	int resY = consoleSize.y / 2;
-	Gotoxy(resX - 38, 5);
-	int coutmode = _setmode(_fileno(stdout), _O_U16TEXT);
-	wcout << L"██████╗ ██╗      ██████╗  ██████╗██╗  ██╗        ███████╗██╗██╗     ██╗" << endl;
-	Gotoxy(resX - 38, 6);
-	wcout << L"██╔══██╗██║     ██╔═══██╗██╔════╝██║ ██╔╝        ██╔════╝██║██║     ██║" << endl;
-	Gotoxy(resX - 38, 7);
-	wcout << L"██████╔╝██║     ██║   ██║██║     █████╔╝         █████╗  ██║██║     ██║" << endl;
-	Gotoxy(resX - 38, 8);
-	wcout << L"██╔══██╗██║     ██║   ██║██║     ██╔═██╗         ██╔══╝  ██║██║     ██║" << endl;
-	Gotoxy(resX - 38, 9);
-	wcout << L"██████╔╝███████╗╚██████╔╝╚██████╗██║  ██╗        ██║     ██║███████╗███████╗" << endl;
-	Gotoxy(resX - 38, 10);
-	wcout << L"╚═════╝ ╚══════╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝        ╚═╝     ╚═╝╚══════╝╚══════╝" << endl;
-	int wcoutmode = _setmode(_fileno(stdout), coutmode);
+	const int coutMode = _setmode(_fileno(stdout), _O_U16TEXT);
 
-	Gotoxy(resX - menuBtnX, menuBtnY);
-	cout << "Game";
-	Gotoxy(resX - menuBtnX, menuBtnY + 1);
-	cout << "Info";
-	Gotoxy(resX - menuBtnX, menuBtnY + 2);
-	cout << "Exit";
+	Gotoxy(_resX - 38, 5);
+	wcout << L"██████╗ ██╗      ██████╗  ██████╗██╗  ██╗        ███████╗██╗██╗     ██╗\n";
+	Gotoxy(_resX - 38, 6);
+	wcout << L"██╔══██╗██║     ██╔═══██╗██╔════╝██║ ██╔╝        ██╔════╝██║██║     ██║\n";
+	Gotoxy(_resX - 38, 7);
+	wcout << L"██████╔╝██║     ██║   ██║██║     █████╔╝         █████╗  ██║██║     ██║\n";
+	Gotoxy(_resX - 38, 8);
+	wcout << L"██╔══██╗██║     ██║   ██║██║     ██╔═██╗         ██╔══╝  ██║██║     ██║\n";
+	Gotoxy(_resX - 38, 9);
+	wcout << L"██████╔╝███████╗╚██████╔╝╚██████╗██║  ██╗        ██║     ██║███████╗███████╗\n";
+	Gotoxy(_resX - 38, 10);
+	wcout << L"╚═════╝ ╚══════╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝        ╚═╝     ╚═╝╚══════╝╚══════╝\n";
 
+	const int wcoutMode = _setmode(_fileno(stdout), coutMode);
+
+	Gotoxy(_resX - _menuBtnX, _menuBtnY);
+	cout << "시작";
+	Gotoxy(_resX - _menuBtnX, _menuBtnY + 1);
+	cout << "정보";
+	Gotoxy(_resX - _menuBtnX, _menuBtnY + 2);
+	cout << "종료";
 }
 
 void TitleScene::SelectMenu()
 {
-	KEY input = KeyController();
-
-	Position consoleSize = GetConsoleResolution();
-	int resX = consoleSize.x / 2;
-	int resY = consoleSize.y / 2;
+	const KEY input = KeyController();
 
 	switch (input)
 	{
 	case KEY::W:
 		if (_currentMenu != MENU::Start)
 		{
-			_currentMenu = (MENU)((int)_currentMenu - 1);
+			_currentMenu = static_cast<MENU>(static_cast<int>(_currentMenu) - 1);
 
-			Gotoxy(resX - menuBtnX - 2, menuBtnY + (int)_currentMenu + 1);
+			Gotoxy(_resX - _menuBtnX - 2, _menuBtnY + static_cast<int>(_currentMenu) + 1);
 			cout << " ";
-			Gotoxy(resX - menuBtnX - 2, menuBtnY + (int)_currentMenu);
+			Gotoxy(_resX - _menuBtnX - 2, _menuBtnY + static_cast<int>(_currentMenu));
 			cout << ">";
 		}
 		break;
@@ -68,11 +74,11 @@ void TitleScene::SelectMenu()
 	case KEY::S:
 		if (_currentMenu != MENU::Quit)
 		{
-			_currentMenu = (MENU)((int)_currentMenu + 1);
+			_currentMenu = static_cast<MENU>(static_cast<int>(_currentMenu) + 1);
 
-			Gotoxy(resX - menuBtnX - 2, menuBtnY + (int)_currentMenu - 1);
+			Gotoxy(_resX - _menuBtnX - 2, _menuBtnY + static_cast<int>(_currentMenu) - 1);
 			cout << " ";
-			Gotoxy(resX - menuBtnX - 2, menuBtnY + (int)_currentMenu);
+			Gotoxy(_resX - _menuBtnX - 2, _menuBtnY + static_cast<int>(_currentMenu));
 			cout << ">";
 		}
 		break;
@@ -83,7 +89,7 @@ void TitleScene::SelectMenu()
 	}
 }
 
-void TitleScene::StartCurrentMenu()
+void TitleScene::StartCurrentMenu() const
 {
 	Scene* newScene = nullptr;
 
