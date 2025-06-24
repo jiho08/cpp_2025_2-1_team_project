@@ -23,10 +23,10 @@ void GameScene::Init()
 {
 	system("cls");
 
-	
+
 	SetMap();
 	Render();
-	
+
 	_player = new Player(_startPos);
 	_player->SetMap(&_map);
 	_player->SetColor(COLOR::RED);
@@ -39,16 +39,16 @@ void GameScene::Update()
 
 	_input = KeyController();
 
-	if (_input == KEY::ESC) 
+	if (_input == KEY::ESC)
 	{
 		Exit();
 		SceneManager::GetInstance()->ChangeScene(new TitleScene());
 	}
-	if(_input == KEY::R)
-	{
+
+	if (_input == KEY::R)
 		Restart();
-	}
-		
+
+	RenderCompleteMap();
 }
 
 void GameScene::Render()
@@ -64,7 +64,7 @@ void GameScene::Render()
 		{
 			Position currentPos = { j, i };
 
-			
+
 
 			if (_player != nullptr && _player->GetPos() == currentPos)
 			{
@@ -121,7 +121,6 @@ void GameScene::Render()
 		cout << '\n';
 		Gotoxy(40, 15 + i + 1);
 	}
-
 }
 
 vector<vector<char>> GameScene::GetMap()
@@ -137,42 +136,43 @@ void GameScene::RenderCompleteMap()
 	{
 		for (int j = 0; j < MAP_WIDTH; ++j)
 		{
-				if (_completeMap[i][j] == static_cast<char>(TILE::Wall))
-				{
-					SetColor(COLOR::WHITE, COLOR::WHITE);
-					cout << "бс";
-					SetColor();
-				}
-				else if (_completeMap[i][j] == static_cast<char>(TILE::Road))
-					cout << "бр";
-				else if (_completeMap[i][j] == static_cast<char>(TILE::Start))
-				{
-					_completeMap[i][j] = '0';
-					cout << "бр";
-				}
-				else if (_completeMap[i][j] == static_cast<char>(TILE::Red))
-				{
-					SetColor(COLOR::RED);
-					cout << "в├";
-					SetColor();
-				}
-				else if (_completeMap[i][j] == static_cast<char>(TILE::Green))
-				{
-					SetColor(COLOR::GREEN);
-					cout << "в├";
-					SetColor();
-				}
-				else if (_completeMap[i][j] == static_cast<char>(TILE::Blue))
-				{
-					SetColor(COLOR::BLUE);
-					cout << "в├";
-					SetColor();
-				}
+			if (_completeMap[i][j] == static_cast<char>(TILE::Wall))
+			{
+				SetColor(COLOR::WHITE, COLOR::WHITE);
+				cout << "бс";
+				SetColor();
+			}
+			else if (_completeMap[i][j] == static_cast<char>(TILE::Road))
+				cout << "бр";
+			else if (_completeMap[i][j] == static_cast<char>(TILE::Start))
+			{
+				_completeMap[i][j] = '0';
+				cout << "бр";
+			}
+			else if (_completeMap[i][j] == static_cast<char>(TILE::Red))
+			{
+				SetColor(COLOR::RED);
+				cout << "в├";
+				SetColor();
+			}
+			else if (_completeMap[i][j] == static_cast<char>(TILE::Green))
+			{
+				SetColor(COLOR::GREEN);
+				cout << "в├";
+				SetColor();
+			}
+			else if (_completeMap[i][j] == static_cast<char>(TILE::Blue))
+			{
+				SetColor(COLOR::BLUE);
+				cout << "в├";
+				SetColor();
+			}
 		}
 
 		cout << '\n';
 		Gotoxy(60, 15 + i + 1);
 	}
+
 	Gotoxy(42, 15 + MAP_HEIGHT + 5);
 	switch (_player->GetColor())
 	{
@@ -208,7 +208,7 @@ void GameScene::SetMap()
 
 		mapFile.close();
 	}
-	
+
 	std::ifstream completeMapFile("CompleteStage" + std::to_string(_stage) + ".txt");
 
 	if (completeMapFile.is_open())
@@ -222,9 +222,8 @@ void GameScene::SetMap()
 
 void GameScene::Restart()
 {
-	delete _player;
-	_player = nullptr;
-	Init();
+	SAFE_DELETE(_player)
+		Init();
 }
 
 void GameScene::Exit()
