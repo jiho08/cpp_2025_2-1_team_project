@@ -12,7 +12,7 @@ using std::array;
 
 class Player final : public Object, public IMovable
 {
-	string _playerSymbol = "¡Ú";
+	string _playerSymbol = "¢Æ ";
 	int _currentColorIndex;
 	const vector<vector<char>>* _map;
 	array<COLOR, 3> _colorList;
