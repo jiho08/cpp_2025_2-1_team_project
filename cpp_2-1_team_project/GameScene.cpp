@@ -23,7 +23,6 @@ void GameScene::Init()
 {
 	system("cls");
 
-
 	SetMap();
 	Render();
 
@@ -69,8 +68,6 @@ void GameScene::Render()
 		for (int j = 0; j < MAP_WIDTH; ++j)
 		{
 			Position currentPos = { j, i };
-
-
 
 			if (_player != nullptr && _player->GetPos() == currentPos)
 			{
