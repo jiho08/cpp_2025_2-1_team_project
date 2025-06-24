@@ -145,6 +145,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="StageClearScene.h" />
     <ClInclude Include="StageSelectScene.h" />
     <ClInclude Include="Structs.h" />
     <ClInclude Include="TitleScene.h" />
@@ -164,6 +165,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Singleton.cpp" />
+    <ClCompile Include="StageClearScene.cpp" />
     <ClCompile Include="StageSelectScene.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>

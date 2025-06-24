@@ -8,6 +8,8 @@
 #include <string>
 #include <fstream>
 
+#include "StageClearScene.h"
+
 GameScene::GameScene(int _selectStage) : _startPos({ 0,0 }), _player(nullptr), _stage(_selectStage)
 {
 	_map = vector(MAP_HEIGHT, vector<char>(MAP_WIDTH));
@@ -49,10 +51,10 @@ void GameScene::Update()
 
 	RenderCompleteMap();
 
-	if (CheckClearStage())
+	if (_input == KEY::SPACE || CheckClearStage())
 	{
-		++_stage;
-		Restart();
+		SceneManager::GetInstance()->ChangeScene(new StageClearScene(_stage++));
+		//Restart();
 	}
 }
 

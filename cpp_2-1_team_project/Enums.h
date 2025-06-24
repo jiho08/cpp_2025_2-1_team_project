@@ -59,3 +59,9 @@ enum class DIR
 {
 	UP, DOWN, LEFT, RIGHT
 };
+
+enum class CLEARMENU
+{
+	NEXT,
+	LOBBY
+};
