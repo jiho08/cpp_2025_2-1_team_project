@@ -36,6 +36,16 @@ void GameScene::Update()
 {
 	_player->Update();
 
+	
+
+	RenderCompleteMap();
+
+	if (CheckClearStage())
+	{
+		++_stage;
+		Restart();
+	}
+
 	_input = KeyController();
 
 	if (_input == KEY::ESC)
@@ -46,14 +56,6 @@ void GameScene::Update()
 
 	if (_input == KEY::R)
 		Restart();
-
-	RenderCompleteMap();
-
-	if (CheckClearStage())
-	{
-		++_stage;
-		Restart();
-	}
 }
 
 void GameScene::Render()
@@ -244,14 +246,25 @@ void GameScene::Restart()
 
 void GameScene::Exit()
 {
-	/*std::ofstream outFile("highStage.txt");
+	std::ifstream inFile("highStage.txt");
+	if (inFile.is_open())
+	{
+		int temp = _stage;
+		inFile >> _stage;
+		if(_stage < temp)
+			_stage = temp;
+		inFile.close();
+	}
+
+	std::ofstream outFile("highStage.txt");
 
 	if (outFile.is_open())
 	{
+		
 		outFile << _stage;
 		outFile.close();
 		return;
 	}
 
-	cout << "파일을 열 수 없습니다.\n";*/
+	cout << "파일을 열 수 없습니다.\n";
 }
