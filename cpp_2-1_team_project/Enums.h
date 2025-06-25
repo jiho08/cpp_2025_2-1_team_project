@@ -26,6 +26,7 @@ enum class KEY
 	D,
 	R,
 	C,
+	B,
 	SPACE,
 	ESC,
 	Fail,
@@ -58,4 +59,10 @@ enum class COLOR
 enum class DIR
 {
 	UP, DOWN, LEFT, RIGHT
+};
+
+enum class CLEARMENU
+{
+	NEXT,
+	LOBBY
 };

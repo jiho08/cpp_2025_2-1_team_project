@@ -8,6 +8,8 @@
 #include <string>
 #include <fstream>
 
+#include "StageClearScene.h"
+
 GameScene::GameScene(int _selectStage) : _startPos({ 0,0 }), _player(nullptr), _stage(_selectStage)
 {
 	_map = vector(MAP_HEIGHT, vector<char>(MAP_WIDTH));
@@ -36,16 +38,6 @@ void GameScene::Update()
 {
 	_player->Update();
 
-	
-
-	RenderCompleteMap();
-
-	if (CheckClearStage())
-	{
-		++_stage;
-		Restart();
-	}
-
 	_input = KeyController();
 
 	if (_input == KEY::ESC)
@@ -56,6 +48,20 @@ void GameScene::Update()
 
 	if (_input == KEY::R)
 		Restart();
+
+	RenderCompleteMap();
+
+	if (_input == KEY::SPACE || CheckClearStage())
+	{
+		SceneManager::GetInstance()->ChangeScene(new StageClearScene(_stage++));
+		//Restart();
+	}
+
+	if (_input == KEY::B)
+	{
+		_map[_player->GetPos().y][_player->GetPos().x] = static_cast<char>(TILE::Road);
+		_player->UndoMove();
+	}
 }
 
 void GameScene::Render()
@@ -88,7 +94,6 @@ void GameScene::Render()
 				case COLOR::BLUE:
 					_map[i][j] = '6';
 					break;
-
 				}
 			}
 			else if (_map[i][j] == static_cast<char>(TILE::Start))
@@ -246,25 +251,14 @@ void GameScene::Restart()
 
 void GameScene::Exit()
 {
-	std::ifstream inFile("highStage.txt");
-	if (inFile.is_open())
-	{
-		int temp = _stage;
-		inFile >> _stage;
-		if(_stage < temp)
-			_stage = temp;
-		inFile.close();
-	}
-
-	std::ofstream outFile("highStage.txt");
+	/*std::ofstream outFile("highStage.txt");
 
 	if (outFile.is_open())
 	{
-		
 		outFile << _stage;
 		outFile.close();
 		return;
 	}
 
-	cout << "파일을 열 수 없습니다.\n";
+	cout << "파일을 열 수 없습니다.\n";*/
 }
