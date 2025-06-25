@@ -56,6 +56,12 @@ void GameScene::Update()
 		SceneManager::GetInstance()->ChangeScene(new StageClearScene(_stage++));
 		//Restart();
 	}
+
+	if (_input == KEY::B)
+	{
+		_map[_player->GetPos().y][_player->GetPos().x] = static_cast<char>(TILE::Road);
+		_player->UndoMove();
+	}
 }
 
 void GameScene::Render()
@@ -88,7 +94,6 @@ void GameScene::Render()
 				case COLOR::BLUE:
 					_map[i][j] = '6';
 					break;
-
 				}
 			}
 			else if (_map[i][j] == static_cast<char>(TILE::Start))

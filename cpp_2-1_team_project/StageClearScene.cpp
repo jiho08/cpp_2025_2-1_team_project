@@ -4,6 +4,8 @@
 #include <iostream>
 #include "Console.h"
 #include "KeyController.h"
+#include "SceneManager.h"
+#include "TitleScene.h"
 
 using std::cout;
 
@@ -26,7 +28,7 @@ void StageClearScene::Init()
 
 void StageClearScene::Update()
 {
-	const KEY input = KeyController();
+	KEY input = KeyController();
 
 	switch (input)
 	{
@@ -35,9 +37,9 @@ void StageClearScene::Update()
 		{
 			_currentMenu = static_cast<CLEARMENU>(static_cast<int>(_currentMenu) - 1);
 
-			Gotoxy(_resX - _menuBtnX - 2, _resY + static_cast<int>(_currentMenu) + 1);
+			Gotoxy(_resX - 2, _resY + static_cast<int>(_currentMenu) + 1);
 			cout << " ";
-			Gotoxy(_resX - _menuBtnX - 2, _resY + static_cast<int>(_currentMenu));
+			Gotoxy(_resX - 2, _resY + static_cast<int>(_currentMenu));
 			cout << ">";
 		}
 		break;
@@ -47,14 +49,15 @@ void StageClearScene::Update()
 		{
 			_currentMenu = static_cast<CLEARMENU>(static_cast<int>(_currentMenu) + 1);
 
-			Gotoxy(_resX - _menuBtnX - 2, _resY + static_cast<int>(_currentMenu) - 1);
+			Gotoxy(_resX - 2, _resY + static_cast<int>(_currentMenu) - 1);
 			cout << " ";
-			Gotoxy(_resX - _menuBtnX - 2, _resY + static_cast<int>(_currentMenu));
+			Gotoxy(_resX - 2, _resY + static_cast<int>(_currentMenu));
 			cout << ">";
 		}
 		break;
 
 	case KEY::SPACE:
+		SceneManager::GetInstance()->ChangeScene(new TitleScene());
 		//StartCurrentMenu();
 		break;
 	}
@@ -64,28 +67,28 @@ void StageClearScene::Render()
 {
 	const int coutMode = _setmode(_fileno(stdout), _O_U16TEXT);
 
-	for (int i = 1; i < 15; ++i)
-	{
-		SetColor(static_cast<COLOR>(i));
-		Gotoxy(_resX - 15, _resY - 10);
-		wcout << L" ██████╗██╗     ███████╗ █████╗ ██████╗     ██╗██╗\n";
-		Sleep(10);
-		Gotoxy(_resX - 15, _resY - 9);
-		wcout << L"██╔════╝██║     ██╔════╝██╔══██╗██╔══██╗    ██║██║\n";
-		Sleep(10);
-		Gotoxy(_resX - 15, _resY - 8);
-		wcout << L"██║     ██║     █████╗  ███████║██████╔╝    ██║██║\n";
-		Sleep(10);
-		Gotoxy(_resX - 15, _resY - 7);
-		wcout << L"██║     ██║     ██╔══╝  ██╔══██║██╔══██╗    ╚═╝╚═╝\n";
-		Sleep(10);
-		Gotoxy(_resX - 15, _resY - 6);
-		wcout << L"╚██████╗███████╗███████╗██║  ██║██║  ██║    ██╗██╗\n";
-		Sleep(10);
-		Gotoxy(_resX - 15, _resY - 5);
-		wcout << L" ╚═════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝╚═╝\n";
-		Sleep(10);
-	}
+	//for (int i = 1; i < 15; ++i)
+	//{
+	//	SetColor(static_cast<COLOR>(i));
+	//	Gotoxy(_resX - 15, _resY - 10);
+	//	wcout << L" ██████╗██╗     ███████╗ █████╗ ██████╗     ██╗██╗\n";
+	//	//Sleep(10);
+	//	Gotoxy(_resX - 15, _resY - 9);
+	//	wcout << L"██╔════╝██║     ██╔════╝██╔══██╗██╔══██╗    ██║██║\n";
+	//	//Sleep(10);
+	//	Gotoxy(_resX - 15, _resY - 8);
+	//	wcout << L"██║     ██║     █████╗  ███████║██████╔╝    ██║██║\n";
+	//	//Sleep(10);
+	//	Gotoxy(_resX - 15, _resY - 7);
+	//	wcout << L"██║     ██║     ██╔══╝  ██╔══██║██╔══██╗    ╚═╝╚═╝\n";
+	//	//Sleep(10);
+	//	Gotoxy(_resX - 15, _resY - 6);
+	//	wcout << L"╚██████╗███████╗███████╗██║  ██║██║  ██║    ██╗██╗\n";
+	//	//Sleep(10);
+	//	Gotoxy(_resX - 15, _resY - 5);
+	//	wcout << L" ╚═════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝╚═╝\n";
+	//	//Sleep(10);
+	//}
 
 	SetColor();
 	const int wcoutMode = _setmode(_fileno(stdout), coutMode);

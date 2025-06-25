@@ -75,6 +75,7 @@ void Player::Render() const
 
 void Player::Move(const DIR dir)
 {
+	_moveHistory.push(_pos);
 	Position newPos = _pos;
 
 	switch (dir)
@@ -108,6 +109,17 @@ void Player::Move(const DIR dir)
 void Player::ChangeColor()
 {
 	SetColor(_colorList[++_currentColorIndex % 3]);
+}
+
+void Player::UndoMove()
+{
+	if (_moveHistory.empty())
+		return;
+
+	Position backPos = _moveHistory.top();
+	_moveHistory.pop();
+
+	SetPosition(backPos);
 }
 
 void Player::SetPosition(const Position newPos)

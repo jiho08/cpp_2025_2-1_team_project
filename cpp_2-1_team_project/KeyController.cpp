@@ -44,6 +44,12 @@ KEY KeyController()
 		return KEY::C;
 	}
 
+	if (GetAsyncKeyState('B') & 0x8000)
+	{
+		Sleep(60);
+		return KEY::B;
+	}
+
 	if (GetAsyncKeyState('R') & 0x8000)
 	{
 		Sleep(60);
