@@ -85,6 +85,9 @@
     <ClCompile Include="StageClearScene.cpp">
       <Filter>Engine\03. Scene</Filter>
     </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Engine\05. Module</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -146,6 +149,9 @@
     </ClInclude>
     <ClInclude Include="StageClearScene.h">
       <Filter>Engine\03. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Engine\05. Module</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

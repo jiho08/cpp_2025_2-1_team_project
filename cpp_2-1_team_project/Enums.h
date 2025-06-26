@@ -66,3 +66,8 @@ enum class CLEARMENU
 	NEXT,
 	LOBBY
 };
+
+enum class SOUNDID
+{
+	BGM, CLEAR, MOVE
+};

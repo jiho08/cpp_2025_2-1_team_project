@@ -153,6 +153,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="StageClearScene.h" />
     <ClInclude Include="StageSelectScene.h" />
     <ClInclude Include="Structs.h" />
@@ -173,6 +174,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Singleton.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="StageClearScene.cpp" />
     <ClCompile Include="StageSelectScene.cpp" />
     <ClCompile Include="TitleScene.cpp" />
