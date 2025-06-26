@@ -162,5 +162,4 @@ void StageSelectScene::SetMap()
 void StageSelectScene::Exit()
 {
 	SceneManager::GetInstance()->ChangeScene(new TitleScene());
-	delete this;
 }

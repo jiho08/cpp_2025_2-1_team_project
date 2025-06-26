@@ -19,6 +19,7 @@ void SceneManager::Render()
 
 void SceneManager::ChangeScene(Scene* newScene)
 {
+	
 	_pCurrentScene = newScene;
 	_pCurrentScene->Init();
 }
