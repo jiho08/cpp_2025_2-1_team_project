@@ -8,6 +8,9 @@
 #include "StageSelectScene.h"
 #include "KeyController.h"
 #include "SceneManager.h"
+#include <Windows.h> 
+#include <mmsystem.h>
+#pragma comment(lib, "winmm.lib")
 
 using std::wcout;
 using std::cout;

@@ -2,6 +2,8 @@
 #include <corecrt_io.h>
 #include <fcntl.h>
 #include <iostream>
+#include <Windows.h> 
+#include <mmsystem.h>
 #include "Console.h"
 #include "KeyController.h"
 #include "SceneManager.h"
@@ -15,10 +17,12 @@ StageClearScene::StageClearScene(const int clearStage) : _clearStage(clearStage)
 
 StageClearScene::~StageClearScene()
 {
+
 }
 
 void StageClearScene::Init()
 {
+	PlaySound(TEXT("Win.wav"), NULL, SND_FILENAME | SND_ASYNC);
 	system("cls");
 
 	_consoleSize = GetConsoleResolution();
@@ -59,6 +63,7 @@ void StageClearScene::Update()
 	case KEY::SPACE:
 		SceneManager::GetInstance()->ChangeScene(new TitleScene());
 		//StartCurrentMenu();
+		PlaySound(TEXT("BGM.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 		break;
 	}
 }

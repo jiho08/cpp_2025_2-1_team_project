@@ -5,12 +5,17 @@
 #include "Player.h"
 #include "SceneManager.h"
 #include "TitleScene.h"
+#pragma comment(lib, "winmm.lib")
+
 
 Core::Core()
 	: _isRunning(true)
 	, _inputHandler(nullptr)
 	, _resolution{}
 {
+	PlaySound(TEXT("BGM.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+	
+
 	_resolution = GetConsoleResolution();
 	_inputHandler = new InputHandler;
 }
@@ -22,6 +27,7 @@ Core::~Core()
 
 void Core::Run()
 {
+	
 	Init();
 
 	while (_isRunning)
@@ -37,6 +43,7 @@ void Core::Init()
 	SetConsoleSettings(800, 600, false, TEXT("2-1 Team Project"));
 	SetCursorVisual(false, 50);
 	SetConsoleFont(L"Consolas", { 18, 18 }, FW_NORMAL);
+	
 	SceneManager::GetInstance()->Init();
 }
 

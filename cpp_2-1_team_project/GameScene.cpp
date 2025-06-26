@@ -7,7 +7,6 @@
 #include "defines.h"
 #include <string>
 #include <fstream>
-
 #include "StageClearScene.h"
 
 GameScene::GameScene(int _selectStage) : _startPos({ 0,0 }), _player(nullptr), _stage(_selectStage)
@@ -18,6 +17,7 @@ GameScene::GameScene(int _selectStage) : _startPos({ 0,0 }), _player(nullptr), _
 
 GameScene::~GameScene()
 {
+	Exit();
 	SAFE_DELETE(_player)
 }
 
@@ -37,6 +37,7 @@ void GameScene::Init()
 void GameScene::Update()
 {
 	_player->Update();
+	RenderCompleteMap();
 
 	_input = KeyController();
 
@@ -49,7 +50,6 @@ void GameScene::Update()
 	if (_input == KEY::R)
 		Restart();
 
-	RenderCompleteMap();
 
 	if (_input == KEY::SPACE || CheckClearStage())
 	{
@@ -251,7 +251,7 @@ void GameScene::Restart()
 
 void GameScene::Exit()
 {
-	/*std::ofstream outFile("highStage.txt");
+	std::ofstream outFile("highStage.txt");
 
 	if (outFile.is_open())
 	{
@@ -260,5 +260,5 @@ void GameScene::Exit()
 		return;
 	}
 
-	cout << "파일을 열 수 없습니다.\n";*/
+	cout << "파일을 열 수 없습니다.\n";
 }

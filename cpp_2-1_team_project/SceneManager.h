@@ -2,7 +2,10 @@
 #include "defines.h"
 #include "Scene.h"
 #include "Singleton.h"
-
+#include <Windows.h> 
+#include <mmsystem.h>
+#include<iostream>
+#pragma comment(lib, "winmm.lib")
 class SceneManager : public Singleton<SceneManager>
 {
 	friend class Singleton;

@@ -1,4 +1,6 @@
 #pragma once
+#include <Windows.h> 
+#include <mmsystem.h>
 #include "Enums.h"
 #include "Scene.h"
 #include "Structs.h"

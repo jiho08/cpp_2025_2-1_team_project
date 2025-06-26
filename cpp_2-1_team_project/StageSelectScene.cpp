@@ -10,19 +10,24 @@ void StageSelectScene::Init()
 	{
 		if (mapFile.is_open())
 		{
+			int temp = _highStage;
 			mapFile >> _highStage;
+			if (_highStage < temp)
+			{
+				_highStage = temp;
+			}
 			mapFile.close();
 
 		}
 		else
 		{
-			_highStage = 17;
+			_highStage = 29;
 		}
 
 	}
 	else
 	{
-		_highStage = 17; 
+		_highStage = 29; 
 	}
 	
 	SetMap();
@@ -157,5 +162,4 @@ void StageSelectScene::SetMap()
 void StageSelectScene::Exit()
 {
 	SceneManager::GetInstance()->ChangeScene(new TitleScene());
-	delete this;
 }
