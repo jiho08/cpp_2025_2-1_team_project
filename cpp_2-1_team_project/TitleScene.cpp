@@ -111,6 +111,8 @@ void TitleScene::StartCurrentMenu() const
 		break;
 
 	case MENU::Quit:
+		system("cls");
+		_exit(0);
 		break;
 	}
 }

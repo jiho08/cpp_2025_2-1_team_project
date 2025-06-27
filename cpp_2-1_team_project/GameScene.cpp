@@ -53,6 +53,7 @@ void GameScene::Update()
 
 	if (_input == KEY::SPACE || CheckClearStage())
 	{
+		Exit();
 		SceneManager::GetInstance()->ChangeScene(new StageClearScene(_stage++));
 		//Restart();
 	}
@@ -251,14 +252,29 @@ void GameScene::Restart()
 
 void GameScene::Exit()
 {
-	std::ofstream outFile("highStage.txt");
 
-	if (outFile.is_open())
+	std::ifstream stage("highStage.txt");
+
+	if (stage.is_open()) 
 	{
-		outFile << _stage;
-		outFile.close();
+		int temp = 0;
+		stage >> temp;
+		if (_stage > temp)
+		{
+			std::ofstream outFile("highStage.txt");
+
+			if (outFile.is_open())
+			{
+				outFile << _stage;
+				outFile.close();
+				
+			}
+		}
+		stage.close();
 		return;
 	}
+
+	
 
 	cout << "파일을 열 수 없습니다.\n";
 }
