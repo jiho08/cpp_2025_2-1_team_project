@@ -252,16 +252,29 @@ void GameScene::Restart()
 
 void GameScene::Exit()
 {
-	std::ofstream outFile("highStage.txt");
 
-	if (outFile.is_open())
+	std::ifstream stage("highStage.txt");
+
+	if (stage.is_open()) 
 	{
 		int temp = 0;
-		outFile << temp;
-		if (_stage < temp) _stage = temp;
-		outFile.close();
+		stage >> temp;
+		if (_stage > temp)
+		{
+			std::ofstream outFile("highStage.txt");
+
+			if (outFile.is_open())
+			{
+				outFile << _stage;
+				outFile.close();
+				
+			}
+		}
+		stage.close();
 		return;
 	}
+
+	
 
 	cout << "파일을 열 수 없습니다.\n";
 }
