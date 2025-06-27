@@ -22,6 +22,8 @@ private:
 	std::vector<SoundEntry> _soundTable =
 	{
 		{L"BGM.wav", 100, 0},
-		{L"Win.wav", 100, 0}
+		{L"Win.wav", 100, 0},
+		{L"PlayerMove.wav", 100, 0},
+		{L"ButtonClick.wav", 100, 0}
 	};
 };

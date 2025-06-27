@@ -15,9 +15,6 @@ Core::Core()
 	, _resolution{}
 {
 	//PlaySound(TEXT("BGM.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
-	SoundManager::GetInstance()->Init();
-	SoundManager::GetInstance()->Play(SOUNDID::BGM, true);
-	SceneManager::GetInstance()->Init();
 
 	_resolution = GetConsoleResolution();
 	_inputHandler = new InputHandler;
@@ -48,6 +45,8 @@ void Core::Init()
 	SetConsoleFont(L"Consolas", { 18, 18 }, FW_NORMAL);
 	
 	SceneManager::GetInstance()->Init();
+	SoundManager::GetInstance()->Init();
+	SoundManager::GetInstance()->Play(SOUNDID::BGM, true);
 }
 
 void Core::Update()

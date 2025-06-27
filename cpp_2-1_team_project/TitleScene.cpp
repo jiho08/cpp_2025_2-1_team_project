@@ -10,6 +10,8 @@
 #include "SceneManager.h"
 #include <Windows.h> 
 #include <mmsystem.h>
+
+#include "SoundManager.h"
 #pragma comment(lib, "winmm.lib")
 
 using std::wcout;
