@@ -53,6 +53,7 @@ void GameScene::Update()
 
 	if (_input == KEY::SPACE || CheckClearStage())
 	{
+		Exit();
 		SceneManager::GetInstance()->ChangeScene(new StageClearScene(_stage++));
 		//Restart();
 	}
@@ -255,7 +256,9 @@ void GameScene::Exit()
 
 	if (outFile.is_open())
 	{
-		outFile << _stage;
+		int temp = 0;
+		outFile << temp;
+		if (_stage < temp) _stage = temp;
 		outFile.close();
 		return;
 	}
