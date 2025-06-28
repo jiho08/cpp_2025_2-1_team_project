@@ -7,6 +7,7 @@
 #include "Console.h"
 #include "KeyController.h"
 #include "SceneManager.h"
+#include "SoundManager.h"
 #include "TitleScene.h"
 
 using std::cout;
@@ -22,8 +23,8 @@ StageClearScene::~StageClearScene()
 
 void StageClearScene::Init()
 {
-	PlaySound(TEXT("Win.wav"), NULL, SND_FILENAME | SND_ASYNC);
 	system("cls");
+	SoundManager::GetInstance()->Play(SOUNDID::CLEAR);
 
 	_consoleSize = GetConsoleResolution();
 	_resX = _consoleSize.x / 2 - 4;
@@ -39,6 +40,7 @@ void StageClearScene::Update()
 	case KEY::W:
 		if (_currentMenu != CLEARMENU::NEXT)
 		{
+			SoundManager::GetInstance()->Play(SOUNDID::BUTTON);
 			_currentMenu = static_cast<CLEARMENU>(static_cast<int>(_currentMenu) - 1);
 
 			Gotoxy(_resX - 2, _resY + static_cast<int>(_currentMenu) + 1);
@@ -51,6 +53,7 @@ void StageClearScene::Update()
 	case KEY::S:
 		if (_currentMenu != CLEARMENU::LOBBY)
 		{
+			SoundManager::GetInstance()->Play(SOUNDID::BUTTON);
 			_currentMenu = static_cast<CLEARMENU>(static_cast<int>(_currentMenu) + 1);
 
 			Gotoxy(_resX - 2, _resY + static_cast<int>(_currentMenu) - 1);
@@ -61,9 +64,9 @@ void StageClearScene::Update()
 		break;
 
 	case KEY::SPACE:
+		SoundManager::GetInstance()->Play(SOUNDID::BUTTON);
 		SceneManager::GetInstance()->ChangeScene(new TitleScene());
 		//StartCurrentMenu();
-		PlaySound(TEXT("BGM.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 		break;
 	}
 }

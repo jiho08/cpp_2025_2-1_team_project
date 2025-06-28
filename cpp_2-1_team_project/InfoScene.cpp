@@ -1,4 +1,5 @@
 #include "InfoScene.h"
+#include "SoundManager.h"
 
 void InfoScene::Init()
 {
@@ -11,6 +12,7 @@ void InfoScene::Update()
 
 	if (_input == KEY::ESC)
 	{
+		SoundManager::GetInstance()->Play(SOUNDID::BUTTON);
 		Exit();
 	}
 }

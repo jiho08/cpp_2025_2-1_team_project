@@ -20,6 +20,7 @@ using std::cout;
 void TitleScene::Init()
 {
 	system("cls");
+	SoundManager::GetInstance()->Play(SOUNDID::BGM, true);
 
 	_consoleSize = GetConsoleResolution();
 	_resX = _consoleSize.x / 2;
@@ -67,6 +68,7 @@ void TitleScene::SelectMenu()
 	case KEY::W:
 		if (_currentMenu != MENU::Start)
 		{
+			SoundManager::GetInstance()->Play(SOUNDID::BUTTON);
 			_currentMenu = static_cast<MENU>(static_cast<int>(_currentMenu) - 1);
 
 			Gotoxy(_resX - _menuBtnX - 2, _menuBtnY + static_cast<int>(_currentMenu) + 1);
@@ -79,6 +81,7 @@ void TitleScene::SelectMenu()
 	case KEY::S:
 		if (_currentMenu != MENU::Quit)
 		{
+			SoundManager::GetInstance()->Play(SOUNDID::BUTTON);
 			_currentMenu = static_cast<MENU>(static_cast<int>(_currentMenu) + 1);
 
 			Gotoxy(_resX - _menuBtnX - 2, _menuBtnY + static_cast<int>(_currentMenu) - 1);
@@ -89,6 +92,7 @@ void TitleScene::SelectMenu()
 		break;
 
 	case KEY::SPACE:
+		SoundManager::GetInstance()->Play(SOUNDID::BUTTON);
 		StartCurrentMenu();
 		break;
 	}

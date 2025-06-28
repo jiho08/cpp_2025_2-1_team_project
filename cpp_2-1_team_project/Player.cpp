@@ -2,9 +2,10 @@
 #include "Console.h"
 #include "defines.h"
 #include "KeyController.h"
+#include "SoundManager.h"
 
 Player::Player(const Position pos) : Object(pos), _currentColorIndex(0),
-_map(nullptr), _colorList({ COLOR::RED, COLOR::GREEN, COLOR::BLUE })
+                                     _map(nullptr), _colorList({ COLOR::RED, COLOR::GREEN, COLOR::BLUE })
 {
 }
 
@@ -75,7 +76,6 @@ void Player::Render() const
 
 void Player::Move(const DIR dir)
 {
-	_moveHistory.push(_pos);
 	Position newPos = _pos;
 
 	switch (dir)
@@ -103,6 +103,8 @@ void Player::Move(const DIR dir)
 	if ((*_map)[newPos.y][newPos.x] != static_cast<char>(TILE::Road))
 		return;
 
+	SoundManager::GetInstance()->Play(SOUNDID::MOVE);
+	_moveHistory.push(_pos);
 	_pos = newPos;
 }
 

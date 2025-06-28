@@ -5,7 +5,6 @@
 #include "Player.h"
 #include "SceneManager.h"
 #include "SoundManager.h"
-#include "TitleScene.h"
 #pragma comment(lib, "winmm.lib")
 
 
@@ -14,8 +13,6 @@ Core::Core()
 	, _inputHandler(nullptr)
 	, _resolution{}
 {
-	//PlaySound(TEXT("BGM.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
-
 	_resolution = GetConsoleResolution();
 	_inputHandler = new InputHandler;
 }

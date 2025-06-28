@@ -1,34 +1,33 @@
 #include "StageSelectScene.h"
+#include "SoundManager.h"
 
 
 void StageSelectScene::Init()
 {
 	system("cls");
+
 	_map = vector(MAP_HEIGHT, vector<char>(MAP_WIDTH));
 	std::ifstream mapFile("highStage.txt");
+
 	if (mapFile.good())
 	{
 		if (mapFile.is_open())
 		{
-			int temp = _highStage;
+			const int temp = _highStage;
 			mapFile >> _highStage;
+
 			if (_highStage < temp)
-			{
 				_highStage = temp;
-			}
+
 			mapFile.close();
 
 		}
 		else
-		{
 			_highStage = 29;
-		}
 
 	}
 	else
-	{
 		_highStage = 29; 
-	}
 	
 	SetMap();
 }
@@ -36,31 +35,36 @@ void StageSelectScene::Init()
 void StageSelectScene::Update()
 {
 	_input = KeyController();
+
 	switch (_input)
 	{
 	case KEY::A:
 		if (_currentStage > 1)
 		{
+			SoundManager::GetInstance()->Play(SOUNDID::BUTTON);
 			_currentStage--;
 			SetMap();
 		}
 		break;
+
 	case KEY::D:
 		if (_currentStage < _highStage)
 		{
+			SoundManager::GetInstance()->Play(SOUNDID::BUTTON);
 			_currentStage++;
 			SetMap();
 		}
 		break;
 
 	case KEY::SPACE:
+		SoundManager::GetInstance()->Play(SOUNDID::BUTTON);
 		SceneManager::GetInstance()->ChangeScene(new GameScene(_currentStage));
 		break;
 	
 	case KEY::ESC:
+		SoundManager::GetInstance()->Play(SOUNDID::BUTTON);
 		Exit();
 		break;
-	
 	}
 }
 
