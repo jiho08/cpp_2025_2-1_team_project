@@ -17,7 +17,7 @@ GameScene::GameScene(int _selectStage) : _startPos({ 0,0 }), _player(nullptr), _
 
 GameScene::~GameScene()
 {
-	Exit();
+	Save();
 	SAFE_DELETE(_player)
 }
 
@@ -43,7 +43,6 @@ void GameScene::Update()
 
 	if (_input == KEY::ESC)
 	{
-		Exit();
 		SceneManager::GetInstance()->ChangeScene(new TitleScene());
 	}
 
@@ -53,7 +52,7 @@ void GameScene::Update()
 
 	if (_input == KEY::SPACE || CheckClearStage())
 	{
-		Exit();
+		Save();
 		SceneManager::GetInstance()->ChangeScene(new StageClearScene(_stage++));
 		//Restart();
 	}
@@ -250,7 +249,7 @@ void GameScene::Restart()
 		Init();
 }
 
-void GameScene::Exit()
+void GameScene::Save()
 {
 
 	std::ifstream stage("highStage.txt");
@@ -259,13 +258,13 @@ void GameScene::Exit()
 	{
 		int temp = 0;
 		stage >> temp;
-		if (_stage > temp)
+		if (_stage >= temp)
 		{
 			std::ofstream outFile("highStage.txt");
 
 			if (outFile.is_open())
 			{
-				outFile << _stage;
+				outFile << _stage + 1;
 				outFile.close();
 				
 			}
