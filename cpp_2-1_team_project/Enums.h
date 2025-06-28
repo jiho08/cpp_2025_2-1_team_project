@@ -69,5 +69,5 @@ enum class CLEARMENU
 
 enum class SOUNDID
 {
-	BGM, CLEAR, MOVE, BUTTON
+	BGM, CLEAR, MOVE, BUTTON, FAIL
 };

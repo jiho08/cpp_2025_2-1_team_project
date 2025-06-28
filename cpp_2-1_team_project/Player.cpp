@@ -98,10 +98,16 @@ void Player::Move(const DIR dir)
 	}
 
 	if (newPos.x < 0 || newPos.x >= MAP_WIDTH || newPos.y < 0 || newPos.y >= MAP_HEIGHT)
+	{
+		SoundManager::GetInstance()->Play(SOUNDID::FAIL);
 		return;
+	}
 
 	if ((*_map)[newPos.y][newPos.x] != static_cast<char>(TILE::Road))
+	{
+		SoundManager::GetInstance()->Play(SOUNDID::FAIL);
 		return;
+	}
 
 	SoundManager::GetInstance()->Play(SOUNDID::MOVE);
 	_moveHistory.push(_pos);
@@ -116,7 +122,10 @@ void Player::ChangeColor()
 void Player::UndoMove()
 {
 	if (_moveHistory.empty())
+	{
+		SoundManager::GetInstance()->Play(SOUNDID::FAIL);
 		return;
+	}
 
 	Position backPos = _moveHistory.top();
 	_moveHistory.pop();

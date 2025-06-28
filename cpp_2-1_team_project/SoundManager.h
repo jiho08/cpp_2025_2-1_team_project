@@ -24,6 +24,7 @@ private:
 		{L"BGM.wav", 100, 0},
 		{L"Win.wav", 50, 0},
 		{L"PlayerMove.wav", 50, 0},
-		{L"ButtonClick.wav", 50, 0}
+		{L"ButtonClick.wav", 50, 0},
+		{L"Failed.wav", 50, 0}
 	};
 };
