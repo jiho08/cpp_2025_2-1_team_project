@@ -52,6 +52,7 @@ void StageClearScene::Update()
 			cout << " ";
 			Gotoxy(_resX - 2, _resY + static_cast<int>(_currentMenu));
 			cout << ">";
+			
 		}
 		break;
 
