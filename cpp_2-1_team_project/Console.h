@@ -1,19 +1,19 @@
 #pragma once
 #include<iostream>
+#include<string>
+#include<vector>
+#include<Windows.h>
+#include"Structs.h"
+#include"Enums.h"
 
-#include "Structs.h"
 using std::cout;
 using std::wcout;
 using std::endl;
-#include<string>
 using std::string;
 using std::wstring;
-#include<vector>
 using std::vector;
-#include<Windows.h>
-#include"Enums.h"
 
-void SetConsoleSettings(int _width, int _height, bool _isFullScreen, const std::wstring& _title);
+void SetConsoleSettings(int width, int height, bool isFullScreen, const std::wstring& title);
 
 void SetLockResize();
 
@@ -25,10 +25,10 @@ BOOL IsGotoxy(int _x, int _y);
 
 COORD CurSorPos();
 
-void SetCursorVisual(bool _isVis, DWORD _size);
+void SetCursorVisual(bool isVis, DWORD size);
 
-void SetColor(COLOR _textcolor = COLOR::WHITE, COLOR _bgcolor = COLOR::BLACK);
+void SetColor(COLOR textColor = COLOR::WHITE, COLOR bgColor = COLOR::BLACK);
 
-void FrameSync(unsigned int _frame);
+void FrameSync(unsigned int frame);
 
-void SetConsoleFont(LPCWSTR _fontname, COORD _size, UINT _weight);
+void SetConsoleFont(LPCWSTR fontName, COORD size, UINT weight);

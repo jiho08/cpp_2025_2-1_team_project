@@ -2,10 +2,8 @@
 #include "defines.h"
 #include "Scene.h"
 #include "Singleton.h"
-#include <Windows.h> 
-#include <mmsystem.h>
-#include<iostream>
 #pragma comment(lib, "winmm.lib")
+
 class SceneManager : public Singleton<SceneManager>
 {
 	friend class Singleton;
@@ -17,7 +15,7 @@ class SceneManager : public Singleton<SceneManager>
 
 public:
 	void Init();
-	void Update();
-	void Render();
+	void Update() const;
+	void Render() const;
 	void ChangeScene(Scene* newScene);
 };

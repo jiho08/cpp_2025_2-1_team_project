@@ -97,13 +97,8 @@ void Player::Move(const DIR dir)
 		break;
 	}
 
-	if (newPos.x < 0 || newPos.x >= MAP_WIDTH || newPos.y < 0 || newPos.y >= MAP_HEIGHT)
-	{
-		SoundManager::GetInstance()->Play(SOUNDID::FAIL);
-		return;
-	}
-
-	if ((*_map)[newPos.y][newPos.x] != static_cast<char>(TILE::Road))
+	if (newPos.x < 0 || newPos.x >= MAP_WIDTH || newPos.y < 0 || newPos.y >= MAP_HEIGHT
+		|| (*_map)[newPos.y][newPos.x] != static_cast<char>(TILE::Road))
 	{
 		SoundManager::GetInstance()->Play(SOUNDID::FAIL);
 		return;
@@ -127,7 +122,7 @@ void Player::UndoMove()
 		return;
 	}
 
-	Position backPos = _moveHistory.top();
+	const Position backPos = _moveHistory.top();
 	_moveHistory.pop();
 	SoundManager::GetInstance()->Play(SOUNDID::MOVE);
 

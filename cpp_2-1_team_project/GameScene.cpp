@@ -9,7 +9,7 @@
 #include <fstream>
 #include "StageClearScene.h"
 
-GameScene::GameScene(int _selectStage) : _startPos({ 0,0 }), _player(nullptr), _stage(_selectStage)
+GameScene::GameScene(const int selectStage) : _startPos({ 0,0 }), _player(nullptr), _stage(selectStage)
 {
 	_map = vector(MAP_HEIGHT, vector<char>(MAP_WIDTH));
 	_completeMap = vector(MAP_HEIGHT, vector<char>(MAP_WIDTH));
@@ -42,19 +42,16 @@ void GameScene::Update()
 	_input = KeyController();
 
 	if (_input == KEY::ESC)
-	{
 		SceneManager::GetInstance()->ChangeScene(new TitleScene());
-	}
 
 	if (_input == KEY::R)
 		Restart();
 
 
-	if (_input == KEY::SPACE || CheckClearStage())
+	if (CheckClearStage())
 	{
 		Save();
 		SceneManager::GetInstance()->ChangeScene(new StageClearScene(_stage++));
-		//Restart();
 	}
 
 	if (_input == KEY::Z)
@@ -88,9 +85,11 @@ void GameScene::Render()
 				case COLOR::RED:
 					_map[i][j] = '4';
 					break;
+
 				case COLOR::GREEN:
 					_map[i][j] = '5';
 					break;
+
 				case COLOR::BLUE:
 					_map[i][j] = '6';
 					break;
@@ -107,26 +106,24 @@ void GameScene::Render()
 				cout << "■";
 				SetColor();
 			}
-
 			else if (_map[i][j] == static_cast<char>(TILE::Road))
 				cout << "□";
-
 			else if (_map[i][j] == static_cast<char>(TILE::Red))
 			{
 				SetColor(COLOR::RED);
-				cout << "▣";
+				cout << "▒ ";
 				SetColor();
 			}
 			else if (_map[i][j] == static_cast<char>(TILE::Green))
 			{
 				SetColor(COLOR::GREEN);
-				cout << "▣";
+				cout << "▒ ";
 				SetColor();
 			}
 			else if (_map[i][j] == static_cast<char>(TILE::Blue))
 			{
 				SetColor(COLOR::BLUE);
-				cout << "▣";
+				cout << "▒ ";
 				SetColor();
 			}
 		}
@@ -165,19 +162,19 @@ void GameScene::RenderCompleteMap()
 			else if (_completeMap[i][j] == static_cast<char>(TILE::Red))
 			{
 				SetColor(COLOR::RED);
-				cout << "▣";
+				cout << "▒ ";
 				SetColor();
 			}
 			else if (_completeMap[i][j] == static_cast<char>(TILE::Green))
 			{
 				SetColor(COLOR::GREEN);
-				cout << "▣";
+				cout << "▒ ";
 				SetColor();
 			}
 			else if (_completeMap[i][j] == static_cast<char>(TILE::Blue))
 			{
 				SetColor(COLOR::BLUE);
-				cout << "▣";
+				cout << "▒ ";
 				SetColor();
 			}
 		}
@@ -195,12 +192,14 @@ void GameScene::RenderCompleteMap()
 		cout << "빨강";
 		SetColor();
 		break;
+
 	case COLOR::GREEN:
 		cout << "현재 색깔: ";
 		SetColor(COLOR::GREEN);
 		cout << "초록";
 		SetColor();
 		break;
+
 	case COLOR::BLUE:
 		cout << "현재 색깔: ";
 		SetColor(COLOR::BLUE);
@@ -245,19 +244,19 @@ void GameScene::SetMap()
 
 void GameScene::Restart()
 {
-	SAFE_DELETE(_player)
-		Init();
+	SAFE_DELETE(_player);
+	Init();
 }
 
-void GameScene::Save()
+void GameScene::Save() const
 {
-
 	std::ifstream stage("highStage.txt");
 
-	if (stage.is_open()) 
+	if (stage.is_open())
 	{
 		int temp = 0;
 		stage >> temp;
+
 		if (_stage >= temp)
 		{
 			std::ofstream outFile("highStage.txt");
@@ -266,14 +265,12 @@ void GameScene::Save()
 			{
 				outFile << _stage + 1;
 				outFile.close();
-				
 			}
 		}
+
 		stage.close();
 		return;
 	}
-
-	
 
 	cout << "파일을 열 수 없습니다.\n";
 }

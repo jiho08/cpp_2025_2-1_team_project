@@ -9,10 +9,10 @@ using std::cout;
 using std::endl;
 using std::vector;
 
-class GameScene : public Scene
+class GameScene final : public Scene
 {
 public:
-	GameScene(int _selectStage);
+	GameScene(int selectStage);
 	~GameScene() override;
 
 	void Init() override;
@@ -20,9 +20,8 @@ public:
 	void Render() override;
 
 	void SetMap();
-	//void GameClear();
 	void Restart();
-	void Save();
+	void Save() const;
 
 	vector<vector<char>> GetMap();
 

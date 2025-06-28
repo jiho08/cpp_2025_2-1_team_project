@@ -1,4 +1,7 @@
 #include "KeyController.h"
+#include <Windows.h>
+#include <mmsystem.h>
+#include <iostream>
 
 KEY KeyController()
 {

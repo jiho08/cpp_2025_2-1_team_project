@@ -26,9 +26,6 @@
     <Filter Include="Engine\05. Module">
       <UniqueIdentifier>{08b95297-5da7-41d1-942d-3825a4cf98c8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\05. Module\Command">
-      <UniqueIdentifier>{0101af37-5db1-48eb-b84b-83909def87ab}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\02. Object\Interface">
       <UniqueIdentifier>{b13ff7cd-2355-44f8-b03b-779eab25a83f}</UniqueIdentifier>
     </Filter>
@@ -52,20 +49,8 @@
     <ClCompile Include="InfoScene.cpp">
       <Filter>Engine\03. Scene</Filter>
     </ClCompile>
-    <ClCompile Include="ICommand.cpp">
-      <Filter>Engine\05. Module\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="IMovable.cpp">
-      <Filter>Engine\02. Object\Interface</Filter>
-    </ClCompile>
-    <ClCompile Include="InputHandler.cpp">
-      <Filter>Engine\05. Module\Command</Filter>
-    </ClCompile>
     <ClCompile Include="KeyController.cpp">
       <Filter>Engine\05. Module</Filter>
-    </ClCompile>
-    <ClCompile Include="MoveCommand.cpp">
-      <Filter>Engine\05. Module\Command</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>Engine\02. Object</Filter>
@@ -75,9 +60,6 @@
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>Engine\03. Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Singleton.cpp">
-      <Filter>Engine\05. Module</Filter>
     </ClCompile>
     <ClCompile Include="StageSelectScene.cpp">
       <Filter>Engine\03. Scene</Filter>
@@ -114,20 +96,8 @@
     <ClInclude Include="InfoScene.h">
       <Filter>Engine\03. Scene</Filter>
     </ClInclude>
-    <ClInclude Include="ICommand.h">
-      <Filter>Engine\05. Module\Command</Filter>
-    </ClInclude>
-    <ClInclude Include="IMovable.h">
-      <Filter>Engine\02. Object\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="InputHandler.h">
-      <Filter>Engine\05. Module\Command</Filter>
-    </ClInclude>
     <ClInclude Include="KeyController.h">
       <Filter>Engine\05. Module</Filter>
-    </ClInclude>
-    <ClInclude Include="MoveCommand.h">
-      <Filter>Engine\05. Module\Command</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>Engine\02. Object</Filter>
@@ -152,6 +122,9 @@
     </ClInclude>
     <ClInclude Include="SoundManager.h">
       <Filter>Engine\05. Module</Filter>
+    </ClInclude>
+    <ClInclude Include="IMovable.h">
+      <Filter>Engine\02. Object\Interface</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

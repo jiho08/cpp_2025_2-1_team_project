@@ -14,7 +14,7 @@ using std::stack;
 
 class Player final : public Object, public IMovable
 {
-	string _playerSymbol = "¢Æ ";
+	string _playerSymbol = "¢Ã";
 	int _currentColorIndex;
 	const vector<vector<char>>* _map;
 	array<COLOR, 3> _colorList;

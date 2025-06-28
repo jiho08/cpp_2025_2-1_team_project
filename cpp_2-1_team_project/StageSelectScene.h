@@ -1,15 +1,7 @@
 #pragma once
 #include "Scene.h"
-#include "defines.h"
 #include "Enums.h"
-#include "Console.h"
-#include "KeyController.h"
-#include "SceneManager.h"
-#include "GameScene.h"
-#include "TitleScene.h"
-
 #include<iostream>
-#include<fstream>
 #include <string>
 #include <vector>
 
@@ -18,7 +10,7 @@ using std::endl;
 using std::string;
 using std::vector;
 
-class StageSelectScene : public Scene
+class StageSelectScene final : public Scene
 {
 public:
 	void Init() override;
@@ -33,4 +25,3 @@ private:
 	void SetMap();
 	void Exit();
 };
-

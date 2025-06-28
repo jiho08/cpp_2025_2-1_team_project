@@ -5,8 +5,8 @@ template<typename T>
 class Singleton
 {
 protected:
-	Singleton() {}
-	~Singleton() {}
+	Singleton() = default;
+	~Singleton() = default;
 
 public:
 	static T* GetInstance()

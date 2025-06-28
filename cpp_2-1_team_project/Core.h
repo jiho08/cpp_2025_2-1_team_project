@@ -1,8 +1,4 @@
 #pragma once
-#include <Windows.h> 
-#include <mmsystem.h>
-#include "Enums.h"
-#include "Scene.h"
 #include "Structs.h"
 
 class Object;
@@ -12,9 +8,8 @@ class Core
 {
 public:
 	Core();
-	~Core();
+	~Core() = default;
 
-public:
 	void Run();
 
 private:
@@ -22,8 +17,6 @@ private:
 	void Update();
 	void Render();
 
-private:
 	bool _isRunning;
-	InputHandler* _inputHandler;
 	Position _resolution;
 };

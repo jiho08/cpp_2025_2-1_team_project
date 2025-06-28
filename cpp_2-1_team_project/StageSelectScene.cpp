@@ -1,6 +1,11 @@
 #include "StageSelectScene.h"
+#include <fstream>
+#include "Console.h"
+#include "GameScene.h"
+#include "KeyController.h"
+#include "SceneManager.h"
 #include "SoundManager.h"
-
+#include "TitleScene.h"
 
 void StageSelectScene::Init()
 {
@@ -20,14 +25,12 @@ void StageSelectScene::Init()
 				_highStage = temp;
 
 			mapFile.close();
-
 		}
 		else
-			_highStage = 29;
-
+			_highStage = 1;
 	}
 	else
-		_highStage = 29;
+		_highStage = 1;
 	
 	SetMap();
 }
@@ -42,7 +45,7 @@ void StageSelectScene::Update()
 		if (_currentStage > 1)
 		{
 			SoundManager::GetInstance()->Play(SOUNDID::BUTTON);
-			_currentStage--;
+			--_currentStage;
 			SetMap();
 		}
 		break;
@@ -51,7 +54,7 @@ void StageSelectScene::Update()
 		if (_currentStage < _highStage)
 		{
 			SoundManager::GetInstance()->Play(SOUNDID::BUTTON);
-			_currentStage++;
+			++_currentStage;
 			SetMap();
 		}
 		break;
@@ -67,8 +70,6 @@ void StageSelectScene::Update()
 		break;
 	}
 }
-
-
 
 void StageSelectScene::Render()
 {
@@ -87,42 +88,45 @@ void StageSelectScene::Render()
 	Gotoxy(52, 4);
 	SetColor(COLOR::LIGHT_YELLOW);
 	cout << "ge";
-	SetColor();
 
+	SetColor();
 	Gotoxy(44, 10);
+
 	if(_currentStage < 10)
 		cout << "Stage: 0" << _currentStage << endl;
 	else
 		cout << "Stage: " << _currentStage << endl;
 
 	Gotoxy(42, 17);
-	for (int i = 0; i < MAP_HEIGHT; i++)
+
+	for (int i = 0; i < MAP_HEIGHT; ++i)
 	{
 		Gotoxy(42, 15 + i + 1);
 
-		for (int j = 0; j < MAP_WIDTH; j++)
+		for (int j = 0; j < MAP_WIDTH; ++j)
 		{
-			Position currentPos = Position(i, j);
-			if (_map[i][j] == (char)TILE::Wall)
+			auto currentPos = Position(i, j);
+
+			if (_map[i][j] == static_cast<char>(TILE::Wall))
 			{
 				SetColor(COLOR::WHITE, COLOR::WHITE);
 				cout << "■";
 				SetColor();
 			}
-			else if (_map[i][j] == (char)TILE::Road)
+			else if (_map[i][j] == static_cast<char>(TILE::Road))
 				cout << "□";
-			else if (_map[i][j] == (char)TILE::Start)
-			{
+			else if (_map[i][j] == static_cast<char>(TILE::Start))
 				cout << "▣";
-			}
-
 		}
-		cout << endl;
+
+		cout << '\n';
 	}
+
 	if (_currentStage == 1) 
 	{
 		Gotoxy(62, 10);
 		cout << ">>";
+
 		Gotoxy(32, 10);
 		cout << "  ";
 	}
@@ -130,6 +134,7 @@ void StageSelectScene::Render()
 	{
 		Gotoxy(62, 10);
 		cout << "  ";
+
 		Gotoxy(32, 10);
 		cout << "<<";
 	}
@@ -137,30 +142,25 @@ void StageSelectScene::Render()
 	{
 		Gotoxy(62, 10);
 		cout << ">>";
+
 		Gotoxy(32, 10);
 		cout << "<<";
 	}
-
-	
 }
 
 void StageSelectScene::SetMap()
 {
 	std::ifstream mapFile("Stage" + std::to_string(_currentStage) + ".txt");
+
 	if (mapFile.is_open())
 	{
 		for (int i = 0; i < MAP_HEIGHT; i++)
-		{
-
 			mapFile.getline(_map[i].data(), MAP_WIDTH + 1);
-		}
+
 		mapFile.close();
-		return;
 	}
 	else
-	{
 		cout << "맵 파일을 열 수 없습니다.";
-	}
 }
 
 void StageSelectScene::Exit()
