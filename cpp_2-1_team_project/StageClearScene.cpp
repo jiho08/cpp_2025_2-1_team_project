@@ -35,6 +35,7 @@ void StageClearScene::Update()
 {
 	KEY input = KeyController();
 
+	Gotoxy(_resX - 2, _resY  + 1);
 	switch (input)
 	{
 	case KEY::W:
@@ -65,7 +66,11 @@ void StageClearScene::Update()
 
 	case KEY::SPACE:
 		SoundManager::GetInstance()->Play(SOUNDID::BUTTON);
-		SceneManager::GetInstance()->ChangeScene(new TitleScene());
+		if (_currentMenu == CLEARMENU::NEXT)
+			SceneManager::GetInstance()->ChangeScene(new GameScene(_clearStage + 1));
+		else
+			SceneManager::GetInstance()->ChangeScene(new TitleScene());
+			
 		//StartCurrentMenu();
 		break;
 	}
@@ -75,28 +80,28 @@ void StageClearScene::Render()
 {
 	const int coutMode = _setmode(_fileno(stdout), _O_U16TEXT);
 
-	//for (int i = 1; i < 15; ++i)
-	//{
-	//	SetColor(static_cast<COLOR>(i));
-	//	Gotoxy(_resX - 15, _resY - 10);
-	//	wcout << L" ██████╗██╗     ███████╗ █████╗ ██████╗     ██╗██╗\n";
-	//	//Sleep(10);
-	//	Gotoxy(_resX - 15, _resY - 9);
-	//	wcout << L"██╔════╝██║     ██╔════╝██╔══██╗██╔══██╗    ██║██║\n";
-	//	//Sleep(10);
-	//	Gotoxy(_resX - 15, _resY - 8);
-	//	wcout << L"██║     ██║     █████╗  ███████║██████╔╝    ██║██║\n";
-	//	//Sleep(10);
-	//	Gotoxy(_resX - 15, _resY - 7);
-	//	wcout << L"██║     ██║     ██╔══╝  ██╔══██║██╔══██╗    ╚═╝╚═╝\n";
-	//	//Sleep(10);
-	//	Gotoxy(_resX - 15, _resY - 6);
-	//	wcout << L"╚██████╗███████╗███████╗██║  ██║██║  ██║    ██╗██╗\n";
-	//	//Sleep(10);
-	//	Gotoxy(_resX - 15, _resY - 5);
-	//	wcout << L" ╚═════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝╚═╝\n";
-	//	//Sleep(10);
-	//}
+	for (int i = 1; i < 15; ++i)
+	{
+		SetColor(static_cast<COLOR>(i));
+		Gotoxy(_resX - 15, _resY - 10);
+		wcout << L" ██████╗██╗     ███████╗ █████╗ ██████╗     ██╗██╗";
+		//Sleep(10);
+		Gotoxy(_resX - 15, _resY - 9);
+		wcout << L"██╔════╝██║     ██╔════╝██╔══██╗██╔══██╗    ██║██║";
+		//Sleep(10);
+		Gotoxy(_resX - 15, _resY - 8);
+		wcout << L"██║     ██║     █████╗  ███████║██████╔╝    ██║██║";
+		//Sleep(10);
+		Gotoxy(_resX - 15, _resY - 7);
+		wcout << L"██║     ██║     ██╔══╝  ██╔══██║██╔══██╗    ╚═╝╚═╝";
+		//Sleep(10);
+		Gotoxy(_resX - 15, _resY - 6);
+		wcout << L"╚██████╗███████╗███████╗██║  ██║██║  ██║    ██╗██╗";
+		//Sleep(10);
+		Gotoxy(_resX - 15, _resY - 5);
+		wcout << L" ╚═════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝╚═╝";
+		//Sleep(10);
+	}
 
 	SetColor();
 	const int wcoutMode = _setmode(_fileno(stdout), coutMode);
