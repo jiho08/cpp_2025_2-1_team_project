@@ -66,7 +66,11 @@ void StageClearScene::Update()
 
 	case KEY::SPACE:
 		SoundManager::GetInstance()->Play(SOUNDID::BUTTON);
-		SceneManager::GetInstance()->ChangeScene(new TitleScene());
+		if (_currentMenu == CLEARMENU::NEXT)
+			SceneManager::GetInstance()->ChangeScene(new GameScene(_clearStage + 1));
+		else
+			SceneManager::GetInstance()->ChangeScene(new TitleScene());
+			
 		//StartCurrentMenu();
 		break;
 	}
