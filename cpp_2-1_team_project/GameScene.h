@@ -22,7 +22,7 @@ public:
 	void SetMap();
 	//void GameClear();
 	void Restart();
-	void Exit();
+	void Save();
 
 	vector<vector<char>> GetMap();
 
