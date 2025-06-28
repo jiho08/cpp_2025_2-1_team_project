@@ -26,32 +26,41 @@ void GameScene::Init()
 	system("cls");
 
 	SetMap();
-	Render();
+
+	for (int i = 0; i < MAP_HEIGHT; ++i)
+		for (int j = 0; j < MAP_WIDTH; ++j)
+			if (_map[i][j] == static_cast<char>(TILE::Start))
+				_startPos = { j, i };
 
 	_player = new Player(_startPos);
 	_player->SetMap(&_map);
 	_player->SetColor(COLOR::RED);
-	RenderCompleteMap();
 }
 
 void GameScene::Update()
 {
 	_player->Update();
-	RenderCompleteMap();
 
 	_input = KeyController();
 
 	if (_input == KEY::ESC)
+	{
 		SceneManager::GetInstance()->ChangeScene(new TitleScene());
+		return;
+	}
 
 	if (_input == KEY::R)
+	{
 		Restart();
+		return;
+	}
 
 
 	if (CheckClearStage())
 	{
 		Save();
 		SceneManager::GetInstance()->ChangeScene(new StageClearScene(_stage++));
+		return;
 	}
 
 	if (_input == KEY::Z)
@@ -96,10 +105,7 @@ void GameScene::Render()
 				}
 			}
 			else if (_map[i][j] == static_cast<char>(TILE::Start))
-			{
-				_startPos = { j, i };
 				cout << "бр";
-			}
 			else if (_map[i][j] == static_cast<char>(TILE::Wall))
 			{
 				SetColor(COLOR::WHITE, COLOR::WHITE);
@@ -131,6 +137,8 @@ void GameScene::Render()
 		cout << '\n';
 		Gotoxy(40, 15 + i + 1);
 	}
+
+	RenderCompleteMap();
 }
 
 vector<vector<char>> GameScene::GetMap()
@@ -184,6 +192,7 @@ void GameScene::RenderCompleteMap()
 	}
 
 	Gotoxy(42, 15 + MAP_HEIGHT + 5);
+
 	switch (_player->GetColor())
 	{
 	case COLOR::RED:
