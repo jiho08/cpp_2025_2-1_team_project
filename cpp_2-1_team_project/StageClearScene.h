@@ -21,6 +21,7 @@ private:
 	int _resX, _resY;
 	int _menuBtnX = 2;
 	int _menuBtnY = 20;
+	int _currentColor;
 	Position _consoleSize;
 	CLEARMENU _currentMenu = CLEARMENU::LOBBY;
 };

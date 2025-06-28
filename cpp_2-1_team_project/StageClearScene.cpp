@@ -1,4 +1,5 @@
 ﻿#include "StageClearScene.h"
+#include <algorithm>
 #include <corecrt_io.h>
 #include <fcntl.h>
 #include <iostream>
@@ -12,7 +13,7 @@
 
 using std::cout;
 
-StageClearScene::StageClearScene(const int clearStage) : _clearStage(clearStage)
+StageClearScene::StageClearScene(const int clearStage) : _clearStage(clearStage), _currentColor(0)
 {
 }
 
@@ -35,7 +36,7 @@ void StageClearScene::Update()
 {
 	KEY input = KeyController();
 
-	Gotoxy(_resX - 2, _resY  + 1);
+	Gotoxy(_resX - 2, _resY + 1);
 	switch (input)
 	{
 	case KEY::W:
@@ -70,8 +71,6 @@ void StageClearScene::Update()
 			SceneManager::GetInstance()->ChangeScene(new GameScene(_clearStage + 1));
 		else
 			SceneManager::GetInstance()->ChangeScene(new TitleScene());
-			
-		//StartCurrentMenu();
 		break;
 	}
 }
@@ -80,28 +79,24 @@ void StageClearScene::Render()
 {
 	const int coutMode = _setmode(_fileno(stdout), _O_U16TEXT);
 
-	for (int i = 1; i < 15; ++i)
-	{
-		SetColor(static_cast<COLOR>(i));
-		Gotoxy(_resX - 15, _resY - 10);
-		wcout << L" ██████╗██╗     ███████╗ █████╗ ██████╗     ██╗██╗";
-		//Sleep(10);
-		Gotoxy(_resX - 15, _resY - 9);
-		wcout << L"██╔════╝██║     ██╔════╝██╔══██╗██╔══██╗    ██║██║";
-		//Sleep(10);
-		Gotoxy(_resX - 15, _resY - 8);
-		wcout << L"██║     ██║     █████╗  ███████║██████╔╝    ██║██║";
-		//Sleep(10);
-		Gotoxy(_resX - 15, _resY - 7);
-		wcout << L"██║     ██║     ██╔══╝  ██╔══██║██╔══██╗    ╚═╝╚═╝";
-		//Sleep(10);
-		Gotoxy(_resX - 15, _resY - 6);
-		wcout << L"╚██████╗███████╗███████╗██║  ██║██║  ██║    ██╗██╗";
-		//Sleep(10);
-		Gotoxy(_resX - 15, _resY - 5);
-		wcout << L" ╚═════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝╚═╝";
-		//Sleep(10);
-	}
+	SetColor(static_cast<COLOR>(_currentColor / 3 + 1));
+	Gotoxy(_resX - 15, _resY - 10);
+	wcout << L" ██████╗██╗     ███████╗ █████╗ ██████╗     ██╗██╗";
+	Gotoxy(_resX - 15, _resY - 9);
+	wcout << L"██╔════╝██║     ██╔════╝██╔══██╗██╔══██╗    ██║██║";
+	Gotoxy(_resX - 15, _resY - 8);
+	wcout << L"██║     ██║     █████╗  ███████║██████╔╝    ██║██║";
+	Gotoxy(_resX - 15, _resY - 7);
+	wcout << L"██║     ██║     ██╔══╝  ██╔══██║██╔══██╗    ╚═╝╚═╝";
+	Gotoxy(_resX - 15, _resY - 6);
+	wcout << L"╚██████╗███████╗███████╗██║  ██║██║  ██║    ██╗██╗";
+	Gotoxy(_resX - 15, _resY - 5);
+	wcout << L" ╚═════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝╚═╝";
+
+	++_currentColor;
+
+	if (_currentColor > 42)
+		_currentColor = 0;
 
 	SetColor();
 	const int wcoutMode = _setmode(_fileno(stdout), coutMode);
