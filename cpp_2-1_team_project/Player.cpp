@@ -120,6 +120,7 @@ void Player::UndoMove()
 
 	Position backPos = _moveHistory.top();
 	_moveHistory.pop();
+	SoundManager::GetInstance()->Play(SOUNDID::MOVE);
 
 	SetPosition(backPos);
 }

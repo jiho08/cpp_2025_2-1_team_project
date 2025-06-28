@@ -57,7 +57,7 @@ void GameScene::Update()
 		//Restart();
 	}
 
-	if (_input == KEY::B)
+	if (_input == KEY::Z)
 	{
 		_map[_player->GetPos().y][_player->GetPos().x] = static_cast<char>(TILE::Road);
 		_player->UndoMove();

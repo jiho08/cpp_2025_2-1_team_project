@@ -44,10 +44,10 @@ KEY KeyController()
 		return KEY::C;
 	}
 
-	if (GetAsyncKeyState('B') & 0x8000)
+	if (GetAsyncKeyState('Z') & 0x8000)
 	{
 		Sleep(40);
-		return KEY::B;
+		return KEY::Z;
 	}
 
 	if (GetAsyncKeyState('R') & 0x8000)
