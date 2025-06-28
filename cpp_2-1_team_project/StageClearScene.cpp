@@ -30,6 +30,9 @@ void StageClearScene::Init()
 	_consoleSize = GetConsoleResolution();
 	_resX = _consoleSize.x / 2 - 4;
 	_resY = _consoleSize.y / 2;
+
+	if (_clearStage == 30)
+		SceneManager::GetInstance()->ChangeScene(new TitleScene());
 }
 
 void StageClearScene::Update()

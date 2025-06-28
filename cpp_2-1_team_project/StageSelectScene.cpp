@@ -27,7 +27,7 @@ void StageSelectScene::Init()
 
 	}
 	else
-		_highStage = 29; 
+		_highStage = 29;
 	
 	SetMap();
 }
