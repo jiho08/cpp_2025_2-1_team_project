@@ -69,7 +69,7 @@ void SoundManager::CloseMciDevice(UINT& deviceId)
 void SoundManager::PlayMciDevice(const UINT deviceId, const bool repeat)
 {
 	MCI_PLAY_PARMS playParams = {};
-	DWORD_PTR playFlags = repeat ? MCI_DGV_PLAY_REPEAT : MCI_NOTIFY;
+	const DWORD_PTR playFlags = repeat ? MCI_DGV_PLAY_REPEAT : MCI_NOTIFY;
 
 	if (repeat == false && deviceId != 0)
 		mciSendCommand(deviceId, MCI_SEEK, MCI_SEEK_TO_START, reinterpret_cast<DWORD_PTR>(&playParams));

@@ -2,12 +2,13 @@
 #include "Scene.h"
 #include "GameScene.h"
 
-class TitleScene : public Scene
+class TitleScene final : public Scene
 {
 public:
 	void Init() override;
 	void Update() override;
 	void Render() override;
+
 private:
 	void SelectMenu();
 	void StartCurrentMenu() const;

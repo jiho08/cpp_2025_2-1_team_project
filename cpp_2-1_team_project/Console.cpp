@@ -1,15 +1,12 @@
 #include "Console.h"
-#include<Windows.h>
 
-#include "Structs.h"
-
-void SetConsoleSettings(int _width, int _height, bool _isFullScreen, const std::wstring& _title)
+void SetConsoleSettings(const int width, const int height, const bool isFullScreen, const std::wstring& title)
 {
-	HWND hwnd = GetConsoleWindow();
+	const HWND hwnd = GetConsoleWindow();
 
-	SetConsoleTitle(_title.c_str());
+	SetConsoleTitle(title.c_str());
 
-	if (_isFullScreen)
+	if (isFullScreen)
 	{
 		SetWindowLong(hwnd, GWL_STYLE, WS_POPUP);
 		ShowWindow(hwnd, SW_MAXIMIZE);
@@ -20,13 +17,13 @@ void SetConsoleSettings(int _width, int _height, bool _isFullScreen, const std::
 		style &= ~WS_CAPTION;
 		SetWindowLong(hwnd, GWL_STYLE, style);
 
-		MoveWindow(hwnd, 260, 60, _width, _height, true);
+		MoveWindow(hwnd, 260, 60, width, height, true);
 	}
 }
 
 void SetLockResize()
 {
-	HWND hwnd = GetConsoleWindow();
+	const HWND hwnd = GetConsoleWindow();
 	LONG style = GetWindowLong(hwnd, GWL_STYLE);
 	style &= ~WS_MAXIMIZEBOX & ~WS_SIZEBOX;
 	SetWindowLong(hwnd, GWL_STYLE, style);
@@ -34,19 +31,19 @@ void SetLockResize()
 
 Position GetConsoleResolution()
 {
-	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	const HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_SCREEN_BUFFER_INFO buf;
 	GetConsoleScreenBufferInfo(handle, &buf);
-	short width = buf.srWindow.Right - buf.srWindow.Left + 1;
-	short height = buf.srWindow.Bottom - buf.srWindow.Top + 1;
+	const short width = buf.srWindow.Right - buf.srWindow.Left + 1;
+	const short height = buf.srWindow.Bottom - buf.srWindow.Top + 1;
 
 	return { width, height };
 }
 
 void Gotoxy(int _x, int _y)
 {
-	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-	COORD Cur = { _x, _y };
+	const HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	const COORD Cur = { _x, _y };
 
 	SetConsoleCursorPosition(handle, Cur);
 }
@@ -54,67 +51,66 @@ void Gotoxy(int _x, int _y)
 BOOL IsGotoxy(int _x, int _y)
 {
 
-	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-	COORD Cur = { _x, _y };
+	const HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	const COORD Cur = { _x, _y };
 
 	return SetConsoleCursorPosition(handle, Cur);
 }
 
 COORD CurSorPos()
 {
-	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	const HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_SCREEN_BUFFER_INFO buf;
-	// 3 : 포인터 로드 + 역참조연산자
-	// & : 참조연산자 + 주소연산자
 	GetConsoleScreenBufferInfo(handle, &buf);
 	return buf.dwCursorPosition;
 }
 
-void SetCursorVisual(bool _isVis, DWORD _size)
+void SetCursorVisual(const bool isVis, const DWORD size)
 {
-	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	const HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_CURSOR_INFO curInfo;
-	curInfo.dwSize = _size;
-	curInfo.bVisible = _isVis;
+	curInfo.dwSize = size;
+	curInfo.bVisible = isVis;
 	SetConsoleCursorInfo(handle, &curInfo);
 }
 
-void SetColor(COLOR _textcolor, COLOR _bgcolor)
+void SetColor(COLOR textColor, COLOR bgColor)
 {
-	int textcolor = (int)_textcolor;
-	int bgcolor = (int)_bgcolor;
-	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(handle, (bgcolor << 4 | textcolor));
+	const int tColor = static_cast<int>(textColor);
+	const int bColor = static_cast<int>(bgColor);
+	const HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(handle, (bColor << 4 | tColor));
 }
 
-void FrameSync(unsigned int _frame)
+void FrameSync(const unsigned int frame)
 {
-	clock_t oldtime, curtime;
-	oldtime = clock();
+	clock_t oldTime = clock();
+
 	while (true)
 	{
-		curtime = clock();
-		if (curtime - oldtime > 1000 / _frame)
+		const clock_t curTime = clock();
+
+		if (curTime - oldTime > 1000 / frame)
 		{
-			oldtime = curtime;
+			oldTime = curTime;
 			break;
 		}
 	}
 }
 
-void SetConsoleFont(LPCWSTR _fontname, COORD _size, UINT _weight)
+void SetConsoleFont(const LPCWSTR fontName, const COORD size, const UINT weight)
 {
 	// 콘솔 핸들
-	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	const HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	// 구조체 초기화
 	CONSOLE_FONT_INFOEX cf = {};
 	cf.cbSize = sizeof(CONSOLE_FONT_INFOEX);
 
 	// 현재 폰트 정보 Get
 	GetCurrentConsoleFontEx(handle, false, &cf);
-	cf.dwFontSize = _size; // 폭, 높이
-	cf.FontWeight = _weight; // FW~
-	wcscpy_s(cf.FaceName, _fontname); // 폰트이름 복사
+	cf.dwFontSize = size; // 폭, 높이
+	cf.FontWeight = weight; // FW~
+	wcscpy_s(cf.FaceName, fontName); // 폰트이름 복사
 	// 폰트 정보 Set
 	SetCurrentConsoleFontEx(handle, false, &cf);
 }

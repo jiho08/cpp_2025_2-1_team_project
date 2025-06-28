@@ -9,8 +9,6 @@
 #include "KeyController.h"
 #include "SceneManager.h"
 #include <Windows.h> 
-#include <mmsystem.h>
-
 #include "SoundManager.h"
 #pragma comment(lib, "winmm.lib")
 
@@ -49,12 +47,14 @@ void TitleScene::Render()
 	Gotoxy(_resX - 48, 10);
 	wcout << L"╚═╝     ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝   ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝    ╚═╝     ╚═╝╚══════╝╚══════╝\n";
 
-	const int wcoutMode = _setmode(_fileno(stdout), coutMode);
+	_setmode(_fileno(stdout), coutMode);
 
 	Gotoxy(_resX - _menuBtnX, _menuBtnY);
 	cout << "시작";
+
 	Gotoxy(_resX - _menuBtnX, _menuBtnY + 1);
 	cout << "정보";
+
 	Gotoxy(_resX - _menuBtnX, _menuBtnY + 2);
 	cout << "종료";
 }
@@ -119,6 +119,5 @@ void TitleScene::StartCurrentMenu() const
 	case MENU::Quit:
 		system("cls");
 		_exit(0);
-		break;
 	}
 }

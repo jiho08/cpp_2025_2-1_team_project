@@ -7,19 +7,18 @@ void SceneManager::Init()
 	_pCurrentScene->Init();
 }
 
-void SceneManager::Update()
+void SceneManager::Update() const
 {
 	_pCurrentScene->Update();
 }
 
-void SceneManager::Render()
+void SceneManager::Render() const
 {
 	_pCurrentScene->Render();
 }
 
 void SceneManager::ChangeScene(Scene* newScene)
 {
-	
 	_pCurrentScene = newScene;
 	_pCurrentScene->Init();
 }
