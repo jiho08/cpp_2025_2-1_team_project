@@ -19,6 +19,9 @@ void Core::Run()
 		Render();
 		FrameSync(60);
 	}
+
+	SceneManager::GetInstance()->DestroyInstance();
+	SoundManager::GetInstance()->DestroyInstance();
 }
 
 void Core::Init()

@@ -5,7 +5,7 @@
 #include "SoundManager.h"
 
 Player::Player(const Position pos) : Object(pos), _currentColorIndex(0),
-                                     _map(nullptr), _colorList({ COLOR::RED, COLOR::GREEN, COLOR::BLUE })
+_map(nullptr), _colorList({ COLOR::RED, COLOR::GREEN, COLOR::BLUE })
 {
 }
 
@@ -111,7 +111,7 @@ void Player::Move(const DIR dir)
 
 void Player::ChangeColor()
 {
-	SetColor(_colorList[++_currentColorIndex % 3]);
+	++_currentColorIndex %= _colorList.size();
 }
 
 void Player::UndoMove()
