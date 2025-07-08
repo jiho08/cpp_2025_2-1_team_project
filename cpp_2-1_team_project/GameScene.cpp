@@ -87,7 +87,7 @@ void GameScene::Render()
 			{
 				SetColor(_player->GetColor());
 				cout << _player->GetSymbol();
-				SetColor();
+				SetColor(); 
 
 				switch (_player->GetColor())
 				{
@@ -240,7 +240,7 @@ bool GameScene::CheckClearStage() const
 {
 	for (int i = 0; i < MAP_HEIGHT; ++i)
 		for (int j = 0; j < MAP_WIDTH; ++j)
-			if (_map[i][j] != _completeMap[i][j] && static_cast<Position>(i, j) != _player->GetPos())
+			if (_map[i][j] != _completeMap[i][j] && static_cast<Position>(j, i) != _player->GetPos())
 				return false;
 
 	return true;
