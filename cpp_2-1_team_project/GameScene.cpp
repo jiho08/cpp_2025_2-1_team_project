@@ -139,6 +139,24 @@ void GameScene::Render()
 	}
 
 	RenderCompleteMap();
+
+	Gotoxy(15, 15);
+	cout << "조작법";
+
+	Gotoxy(15, 16);
+	cout << "이동 : WASD";
+
+	Gotoxy(15, 17);
+	cout << "색 변경 : C";
+
+	Gotoxy(15, 18);
+	cout << "되돌리기 : Z";
+
+	Gotoxy(15, 19);
+	cout << "재시작 : R";
+
+	Gotoxy(15, 20);
+	cout << "나가기 : ESC";
 }
 
 vector<vector<char>> GameScene::GetMap()
@@ -191,7 +209,7 @@ void GameScene::RenderCompleteMap()
 		Gotoxy(60, 15 + i + 1);
 	}
 
-	Gotoxy(42, 15 + MAP_HEIGHT + 5);
+	Gotoxy(38, 15 + MAP_HEIGHT + 5);
 
 	switch (_player->GetColor())
 	{

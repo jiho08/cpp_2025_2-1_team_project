@@ -74,6 +74,6 @@ void SoundManager::PlayMciDevice(const UINT deviceId, const bool repeat)
 	if (repeat == false && deviceId != 0)
 		mciSendCommand(deviceId, MCI_SEEK, MCI_SEEK_TO_START, reinterpret_cast<DWORD_PTR>(&playParams));
 
-	// reinterpret : 비트 단위 변환. MCI_PLAY_PARAMS*의 메모리 주소를 DWORD_PTR(정수형)으로 바꿔서 넘길라고 씀 (UB 조심)
+	// reinterpret : 비트 단위 변환. MCI_PLAY_PARAMS의 메모리 주소를 DWORD_PTR(정수형)으로 바꿔서 넘길라고 씀 (UB 조심)
 	mciSendCommand(deviceId, MCI_PLAY, playFlags, reinterpret_cast<DWORD_PTR>(&playParams));
 }
